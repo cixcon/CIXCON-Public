@@ -356,19 +356,29 @@
 
     .approach-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0;
     }
     @media (max-width: 768px) {
       .approach-grid { grid-template-columns: 1fr; gap: 40px; }
-      .ap-item + .ap-item { border-left: none !important; padding-left: 0 !important; border-top: 1px solid rgba(250,247,242,0.10); padding-top: 40px !important; }
+      .ap-item { border-left: none !important; border-top: none !important; padding: 0 !important; }
+      .ap-item.row-2 { border-top: 1px solid rgba(250,247,242,0.10) !important; padding-top: 40px !important; }
     }
 
-    .ap-item { padding-right: 48px; }
-    .ap-item + .ap-item {
-      padding: 0 48px 0 48px;
+    .ap-item {
+      padding: 0 48px 48px 0;
+    }
+    .ap-item:nth-child(2n) {
+      padding: 0 0 48px 48px;
       border-left: 1px solid rgba(250,247,242,0.12);
     }
-    .ap-item:last-child { padding-right: 0; }
+    .ap-item:nth-child(n+3) {
+      padding-top: 48px;
+      border-top: 1px solid rgba(250,247,242,0.12);
+    }
+    .ap-item:nth-child(n+3):nth-child(2n) {
+      padding: 48px 0 0 48px;
+    }
 
     .ap-num {
       font-size: 11px;
@@ -769,23 +779,28 @@
     <div class="wrap">
       <div class="sh reveal">
         <span class="eyebrow">How we work</span>
-        <h2>Three principles we don't compromise on</h2>
-        <p>Consulting firms say a lot of things. These are the three we've staked the practice on.</p>
+        <h2>Four principles we don't compromise on</h2>
+        <p>Consulting firms say a lot of things. These are the four we've staked the practice on.</p>
         <span class="sh-rule"></span>
       </div>
       <div class="approach-grid stagger">
         <div class="ap-item reveal">
           <div class="ap-num">01</div>
           <h3>Clarity</h3>
-          <p>We say what we actually think. The answer first, the reasoning second. If something is uncertain, we say so plainly. Most organizational problems get worse when people avoid the direct statement — we don't avoid it.</p>
+          <p>We say what we actually think. The answer first, the reasoning second. If something is uncertain, we say so plainly. Most organizational problems get worse when people avoid the direct statement — we don't.</p>
         </div>
         <div class="ap-item reveal">
           <div class="ap-num">02</div>
-          <h3>Integrity</h3>
-          <p>We own our recommendations. If the evidence changes, we say so — even when that means walking back what we said last week. Being right matters more than looking consistent. You'll always know where we stand and why.</p>
+          <h3>Accountability</h3>
+          <p>We own the outcome, not just the deliverable. When CIX makes a recommendation, we stand behind it fully — through implementation, adjustment, and completion. Our engagement doesn't end when the presentation does.</p>
         </div>
-        <div class="ap-item reveal">
+        <div class="ap-item row-2 reveal">
           <div class="ap-num">03</div>
+          <h3>Ownership</h3>
+          <p>[Your guidance here]</p>
+        </div>
+        <div class="ap-item row-2 reveal">
+          <div class="ap-num">04</div>
           <h3>Partnership</h3>
           <p>We work alongside you, not at you. Your people know your organization better than we do. We bring outside perspective and structured thinking; you supply the context that makes it actionable. Both halves matter.</p>
         </div>
