@@ -1,92 +1,1066 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Class IX Consulting | Professional Advisory</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Inter', sans-serif; }
-        .brand-blue { color: #0099d8; } /* Matches your logo blue */
-        .bg-brand-blue { background-color: #0099d8; }
-        .brand-orange { color: #f7941d; } /* Matches your sunset orange */
-    </style>
+  <!--
+    ═══════════════════════════════════════════════════════════════
+    Class IX Consulting — cixcon.com
+    ──────────────────────────────────────────────────────────────
+    Brand colors
+      CIX Blue   #29ABE2  — primary; headers, links, key elements
+      CIX Orange #FF9600  — accent only; one CTA per section
+      CIX Tan    #C69C6D  — warm neutral; dividers, accents
+      Ink        #1F2A36  — body text, headlines
+      Slate      #5A6772  — secondary text, captions
+      Paper      #FAF7F2  — page background
+
+    Typography
+      Source Serif 4  — display / headlines (Google Fonts)
+      Inter           — body and UI (Google Fonts)
+
+    Images (./images/ folder)
+      CIX-Full-Brand.png   Nav + footer logo (horizontal lockup)
+      CIX-Compact.png      Favicon
+      owner-headshot.png   About / Founder section
+    ═══════════════════════════════════════════════════════════════
+  -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Class IX Consulting helps organizations cut through complexity, make better decisions, and execute with confidence. Strategy, operations, supply chain, and AI integration advisory.">
+  <title>Class IX Consulting — Clarity. Steadiness. Progress.</title>
+  <link rel="icon" href="./images/CIX-Compact.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    img, svg { display: block; max-width: 100%; }
+    ul, ol { list-style: none; }
+    button { font-family: inherit; cursor: pointer; }
+    input, textarea { font-family: inherit; }
+
+    /* ── Tokens ── */
+    :root {
+      --blue:       #29ABE2;
+      --orange:     #FF9600;
+      --tan:        #C69C6D;
+      --ink:        #1F2A36;
+      --slate:      #5A6772;
+      --paper:      #FAF7F2;
+      --white:      #FFFFFF;
+      --blue-700:   #1880AC;
+      --orange-700: #C46F00;
+      --tan-50:     #F6EEE3;
+      --border:     rgba(31,42,54,0.10);
+      --border-mid: rgba(31,42,54,0.18);
+      --serif:      "Source Serif 4", Georgia, serif;
+      --sans:       "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --ease:       cubic-bezier(0.22,0.61,0.36,1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.55;
+      color: var(--ink);
+      background: var(--paper);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    /* ── Layout ── */
+    .wrap {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+    @media (max-width: 768px) { .wrap { padding: 0 24px; } }
+
+    .section-pad { padding: 112px 0; }
+    @media (max-width: 768px) { .section-pad { padding: 64px 0; } }
+
+    /* ── Type helpers ── */
+    .eyebrow {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--slate);
+    }
+
+    /* ── Reveal animation ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity 380ms var(--ease), transform 380ms var(--ease);
+    }
+    .reveal.in { opacity: 1; transform: none; }
+
+    .stagger > .reveal:nth-child(1) { transition-delay:   0ms; }
+    .stagger > .reveal:nth-child(2) { transition-delay:  90ms; }
+    .stagger > .reveal:nth-child(3) { transition-delay: 180ms; }
+    .stagger > .reveal:nth-child(4) { transition-delay: 270ms; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { transform: none; transition: opacity 280ms linear; }
+    }
+
+    /* ── Focus ── */
+    :focus-visible {
+      outline: 2px solid var(--blue);
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+
+    /* ════════════════════════════════════════════════
+       NAV
+    ════════════════════════════════════════════════ */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      padding: 20px 0;
+      transition: background 240ms var(--ease), box-shadow 240ms var(--ease), padding 240ms var(--ease);
+    }
+    .nav.scrolled {
+      background: rgba(250,247,242,0.92);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      box-shadow: 0 1px 0 rgba(31,42,54,0.07);
+      padding: 10px 0;
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo img { width: 150px; height: auto; }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+    }
+    .nav-links a {
+      font-size: 15px;
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      padding-bottom: 2px;
+      transition: color 140ms var(--ease), border-color 140ms var(--ease);
+    }
+    .nav-links a:hover { color: var(--blue); border-bottom-color: var(--blue); }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 32px; height: 32px;
+      background: none;
+      border: none;
+      padding: 0;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px; height: 2px;
+      background: var(--ink);
+      border-radius: 1px;
+      transition: all 220ms var(--ease);
+    }
+
+    /* Mobile overlay */
+    .mobile-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 199;
+      background: var(--paper);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 36px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 220ms var(--ease);
+    }
+    .mobile-overlay.open { opacity: 1; pointer-events: all; }
+    .mobile-overlay a {
+      font-family: var(--serif);
+      font-size: 28px;
+      font-weight: 600;
+      color: var(--ink);
+      text-decoration: none;
+      transition: color 140ms;
+    }
+    .mobile-overlay a:hover { color: var(--blue); }
+    .mobile-close {
+      position: absolute;
+      top: 20px; right: 24px;
+      background: none;
+      border: none;
+      font-size: 24px;
+      color: var(--slate);
+      line-height: 1;
+      padding: 8px;
+      transition: color 140ms;
+    }
+    .mobile-close:hover { color: var(--ink); }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+    }
+
+    /* ── Buttons ── */
+    .btn {
+      display: inline-block;
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1;
+      padding: 14px 28px;
+      border-radius: 4px;
+      border: none;
+      text-decoration: none;
+      transition: background 140ms var(--ease), color 140ms var(--ease);
+    }
+    .btn:hover { border-bottom: none; }
+
+    .btn-orange { background: var(--orange); color: var(--white); }
+    .btn-orange:hover { background: var(--orange-700); color: var(--white); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--blue);
+      border: 1.5px solid var(--blue);
+    }
+    .btn-outline:hover { background: var(--blue); color: var(--white); }
+
+    /* ── Section header ── */
+    .sh { margin-bottom: 56px; }
+    .sh .eyebrow { margin-bottom: 14px; }
+    .sh h2 {
+      font-family: var(--serif);
+      font-size: clamp(26px,3vw,32px);
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.2;
+      text-wrap: pretty;
+      max-width: 540px;
+    }
+    .sh p {
+      margin-top: 14px;
+      font-size: 17px;
+      color: var(--slate);
+      line-height: 1.6;
+      max-width: 540px;
+    }
+    .sh-rule {
+      display: block;
+      width: 40px; height: 2px;
+      background: var(--blue);
+      margin-top: 18px;
+    }
+
+    /* ════════════════════════════════════════════════
+       HERO
+    ════════════════════════════════════════════════ */
+    #hero {
+      background: var(--paper);
+      padding: 180px 0 128px;
+      border-bottom: 1px solid var(--border);
+    }
+    @media (max-width: 768px) { #hero { padding: 120px 0 72px; } }
+
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+    .hero-rule {
+      width: 32px; height: 1px;
+      background: var(--tan);
+    }
+    #hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(34px, 5vw, 52px);
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      text-wrap: pretty;
+      max-width: 680px;
+      margin-bottom: 24px;
+    }
+    .hero-sub {
+      font-size: 18px;
+      color: var(--slate);
+      line-height: 1.65;
+      max-width: 560px;
+      margin-bottom: 40px;
+    }
+
+    /* ════════════════════════════════════════════════
+       SERVICES
+    ════════════════════════════════════════════════ */
+    #services { background: var(--white); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    @media (max-width: 768px) { .services-grid { grid-template-columns: 1fr; } }
+
+    .svc-card {
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 36px;
+    }
+    .svc-num {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 14px;
+    }
+    .svc-card h3 {
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.3;
+      margin-bottom: 12px;
+    }
+    .svc-card p {
+      font-size: 15px;
+      color: var(--slate);
+      line-height: 1.65;
+    }
+
+    /* ════════════════════════════════════════════════
+       APPROACH  (full-bleed Ink)
+    ════════════════════════════════════════════════ */
+    #approach { background: var(--ink); }
+
+    #approach .sh h2    { color: var(--paper); }
+    #approach .sh p     { color: rgba(250,247,242,0.60); }
+    #approach .eyebrow  { color: rgba(250,247,242,0.45); }
+    #approach .sh-rule  { background: var(--blue); }
+
+    .approach-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+    @media (max-width: 768px) {
+      .approach-grid { grid-template-columns: 1fr; gap: 40px; }
+      .ap-item + .ap-item { border-left: none !important; padding-left: 0 !important; border-top: 1px solid rgba(250,247,242,0.10); padding-top: 40px !important; }
+    }
+
+    .ap-item { padding-right: 48px; }
+    .ap-item + .ap-item {
+      padding: 0 48px 0 48px;
+      border-left: 1px solid rgba(250,247,242,0.12);
+    }
+    .ap-item:last-child { padding-right: 0; }
+
+    .ap-num {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 16px;
+    }
+    .ap-item h3 {
+      font-family: var(--serif);
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--paper);
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+    .ap-item p {
+      font-size: 15px;
+      color: rgba(250,247,242,0.62);
+      line-height: 1.70;
+    }
+
+    /* ════════════════════════════════════════════════
+       WORK
+    ════════════════════════════════════════════════ */
+    #work { background: var(--paper); }
+
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    @media (max-width: 900px) { .work-grid { grid-template-columns: 1fr; } }
+    @media (min-width: 600px) and (max-width: 900px) { .work-grid { grid-template-columns: repeat(2, 1fr); } }
+
+    .work-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .work-meta {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--tan);
+    }
+    .work-card h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--slate);
+      line-height: 1.45;
+    }
+    .work-divider { height: 1px; background: var(--border); margin: 2px 0; }
+    .work-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--slate);
+      padding: 4px 10px;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      align-self: flex-start;
+    }
+
+    /* ════════════════════════════════════════════════
+       ABOUT
+    ════════════════════════════════════════════════ */
+    #about { background: var(--white); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 72px;
+      align-items: start;
+    }
+    @media (max-width: 768px) { .about-grid { grid-template-columns: 1fr; gap: 36px; } }
+
+    .about-photo img {
+      width: 100%;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+    }
+
+    .about-eyebrow { margin-bottom: 14px; }
+    .about-name {
+      font-family: var(--serif);
+      font-size: 28px;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.15;
+      margin-bottom: 6px;
+    }
+    .about-role {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 24px;
+    }
+    .about-bio p {
+      font-size: 16px;
+      color: var(--slate);
+      line-height: 1.70;
+      margin-bottom: 16px;
+    }
+    .about-bio p:last-of-type { margin-bottom: 0; }
+
+    .value-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 28px;
+    }
+    .vtag {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink);
+      padding: 6px 14px;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+    }
+
+    /* ════════════════════════════════════════════════
+       CONTACT
+    ════════════════════════════════════════════════ */
+    #contact { background: var(--paper); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 96px;
+      align-items: start;
+    }
+    @media (max-width: 900px) { .contact-grid { grid-template-columns: 1fr; gap: 48px; } }
+
+    .cform {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    @media (max-width: 560px) { .form-row { grid-template-columns: 1fr; } }
+
+    .fg {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .fg label {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+    .fg input, .fg textarea {
+      font-size: 15px;
+      color: var(--ink);
+      background: var(--white);
+      border: 1px solid var(--border-mid);
+      border-radius: 4px;
+      padding: 12px 14px;
+      outline: none;
+      line-height: 1.5;
+      transition: border-color 140ms var(--ease), box-shadow 140ms var(--ease);
+    }
+    .fg input:focus, .fg textarea:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(41,171,226,0.12);
+    }
+    .fg textarea { resize: vertical; min-height: 120px; }
+
+    .form-note {
+      font-size: 13px;
+      color: var(--slate);
+      margin-top: 2px;
+    }
+    .form-note a { color: var(--blue); border-bottom: 1px solid transparent; text-decoration: none; }
+    .form-note a:hover { border-bottom-color: var(--blue); }
+
+    /* Form success state */
+    .form-success {
+      display: none;
+      background: #EAF7EE;
+      border: 1px solid rgba(39,174,96,0.25);
+      border-radius: 6px;
+      padding: 20px 24px;
+      font-size: 15px;
+      color: #1F6B35;
+      line-height: 1.5;
+    }
+
+    .cinfo {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+      padding-top: 4px;
+    }
+    .ci-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--tan);
+      margin-bottom: 5px;
+    }
+    .ci-body {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .ci-body span,
+    .ci-body a {
+      font-size: 15px;
+      color: var(--slate);
+      line-height: 1.65;
+      text-decoration: none;
+      border-bottom: none;
+    }
+    .ci-body a:hover { color: var(--blue); }
+
+    /* ════════════════════════════════════════════════
+       FOOTER
+    ════════════════════════════════════════════════ */
+    footer {
+      background: var(--ink);
+      padding: 72px 0 40px;
+    }
+    .ft-logo-plate {
+      display: inline-flex;
+      background: var(--paper);
+      border-radius: 6px;
+      padding: 10px 16px;
+      margin-bottom: 52px;
+    }
+    .ft-logo-plate img { width: 136px; height: auto; }
+
+    .ft-cols {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 48px;
+      margin-bottom: 52px;
+    }
+    @media (max-width: 768px) { .ft-cols { grid-template-columns: 1fr; gap: 28px; } }
+
+    .ft-col-head {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(250,247,242,0.38);
+      margin-bottom: 12px;
+    }
+    .ft-col-body {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+    .ft-col-body span,
+    .ft-col-body a {
+      font-size: 14px;
+      color: rgba(250,247,242,0.58);
+      line-height: 1.7;
+      text-decoration: none;
+      border-bottom: none;
+    }
+    .ft-col-body a:hover { color: var(--paper); }
+
+    .ft-rule {
+      height: 1px;
+      background: rgba(250,247,242,0.10);
+      margin-bottom: 28px;
+    }
+    .ft-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .ft-copy {
+      font-size: 13px;
+      color: rgba(250,247,242,0.33);
+    }
+    .ft-tagline {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 15px;
+      color: rgba(250,247,242,0.50);
+    }
+  </style>
 </head>
-<body class="bg-gray-50 text-gray-900">
+<body>
 
-    <nav class="bg-white shadow-sm sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-20 items-center">
-                <div class="flex-shrink-0">
-                    <img class="h-12 w-auto" src="images/CIX-Full-Brand.png" alt="Class IX Consulting">
-                </div>
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-8 font-medium">
-                        <a href="#services" class="hover:text-blue-600 transition">Services</a>
-                        <a href="#about" class="hover:text-blue-600 transition">About</a>
-                        <a href="#contact" class="bg-black text-white px-5 py-2 rounded-lg hover:bg-gray-800 transition">Get Started</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </nav>
+  <!-- ════════════════════════════════════
+       NAVIGATION
+  ════════════════════════════════════ -->
+  <nav class="nav" id="site-nav" aria-label="Main navigation">
+    <div class="wrap nav-inner">
+      <a href="#hero" class="nav-logo" aria-label="Class IX Consulting — home">
+        <img src="./images/CIX-Full-Brand.png" alt="Class IX Consulting">
+      </a>
+      <ul class="nav-links" role="list">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#approach">Approach</a></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
 
-    <section class="relative bg-white py-20 overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center">
-            <div class="md:w-1/2 mb-10 md:mb-0">
-                <h1 class="text-5xl font-extrabold tracking-tight text-gray-900 leading-tight">
-                    Navigating Your Business Toward <span class="brand-blue">Clear Horizons.</span>
-                </h1>
-                <p class="mt-6 text-lg text-gray-600 leading-relaxed max-w-xl">
-                    Class IX Consulting provides elite advisory services designed to streamline operations, optimize growth, and ensure your business sails smoothly in any market.
-                </p>
-                <div class="mt-8">
-                    <a href="#contact" class="inline-block bg-brand-blue text-white px-8 py-4 rounded-xl font-bold text-lg shadow-lg hover:brightness-110 transition">Book a Consultation</a>
-                </div>
-            </div>
-            <div class="md:w-1/2 flex justify-center">
-                <img src="images/CIX-Compact.png" alt="Class IX" class="w-4/5 drop-shadow-2xl">
-            </div>
-        </div>
-    </section>
+  <!-- Mobile overlay -->
+  <div class="mobile-overlay" id="mobile-overlay" role="dialog" aria-modal="true" aria-label="Site navigation">
+    <button class="mobile-close" id="mobile-close" aria-label="Close menu">✕</button>
+    <a href="#services" class="mob-link">Services</a>
+    <a href="#approach" class="mob-link">Approach</a>
+    <a href="#work" class="mob-link">Work</a>
+    <a href="#about" class="mob-link">About</a>
+    <a href="#contact" class="mob-link">Contact</a>
+  </div>
 
-    <section id="services" class="py-24 bg-gray-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-3xl font-bold text-gray-900">Our Expertise</h2>
-            <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition border-t-4 border-brand-blue">
-                    <div class="text-brand-blue mb-4 text-3xl font-bold">01</div>
-                    <h3 class="text-xl font-bold mb-3">Strategic Planning</h3>
-                    <p class="text-gray-600">Comprehensive roadmaps to transition your business from where it is to where it needs to be.</p>
-                </div>
-                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition border-t-4 border-brand-blue">
-                    <div class="text-brand-blue mb-4 text-3xl font-bold">02</div>
-                    <h3 class="text-xl font-bold mb-3">Operational Efficiency</h3>
-                    <p class="text-gray-600">Identifying bottlenecks and implementing lean solutions to maximize your bottom line.</p>
-                </div>
-                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition border-t-4 border-brand-blue">
-                    <div class="text-brand-blue mb-4 text-3xl font-bold">03</div>
-                    <h3 class="text-xl font-bold mb-3">Risk Management</h3>
-                    <p class="text-gray-600">Proactive strategies to protect your assets and navigate complex regulatory environments.</p>
-                </div>
-            </div>
+  <!-- ════════════════════════════════════
+       HERO
+  ════════════════════════════════════ -->
+  <section id="hero">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="hero-eyebrow">
+          <div class="hero-rule"></div>
+          <span class="eyebrow">Class IX Consulting</span>
         </div>
-    </section>
+        <h1>Clear thinking when the stakes are high.</h1>
+        <p class="hero-sub">CIX partners with organizations navigating complexity — whether that's a broken process, a strategic inflection point, or a technology transformation that has to stick. We bring operational discipline, direct counsel, and the kind of partnership that doesn't stop at the slide deck.</p>
+        <a href="#contact" class="btn btn-orange">Start a conversation</a>
+      </div>
+    </div>
+  </section>
 
-    <footer id="contact" class="bg-black text-white py-16">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <img src="images/CIX-Logo.png" alt="CIX" class="h-16 mx-auto mb-6 opacity-80">
-            <h2 class="text-3xl font-bold mb-4">Ready for Class IX results?</h2>
-            <p class="text-gray-400 mb-8 text-lg">Contact us today for a confidential review of your business needs.</p>
-            <a href="mailto:your-email@domain.com" class="text-xl font-semibold border-b-2 border-brand-blue pb-2 hover:text-brand-blue transition">
-                hello@classixconsulting.com
-            </a>
-            <div class="mt-12 pt-8 border-t border-gray-800 text-sm text-gray-500">
-                &copy; 2026 Class IX Consulting. All rights reserved.
-            </div>
+  <!-- ════════════════════════════════════
+       SERVICES
+  ════════════════════════════════════ -->
+  <section id="services" class="section-pad">
+    <div class="wrap">
+      <div class="sh reveal">
+        <span class="eyebrow">What we do</span>
+        <h2>Practical expertise across four disciplines</h2>
+        <p>Every engagement starts with your problem — not our playbook.</p>
+        <span class="sh-rule"></span>
+      </div>
+      <div class="services-grid stagger">
+        <div class="svc-card reveal">
+          <div class="svc-num">01</div>
+          <h3>Strategy &amp; Planning</h3>
+          <p>We help you define what success looks like, set the right priorities, and build a plan that accounts for real constraints — not ideal ones. Data-driven decision making and risk analysis are built into the process, not bolted on at the end.</p>
         </div>
-    </footer>
+        <div class="svc-card reveal">
+          <div class="svc-num">02</div>
+          <h3>Operations &amp; Process Improvement</h3>
+          <p>Good strategy dies in poor execution. We map your current state, identify what's slowing you down, and redesign processes that work — drawing on Agile program management methods and a track record in high-tempo operational environments.</p>
+        </div>
+        <div class="svc-card reveal">
+          <div class="svc-num">03</div>
+          <h3>Digital Transformation &amp; AI Integration</h3>
+          <p>The question isn't whether to adopt AI — it's how to do it deliberately. We help organizations assess readiness, build implementation roadmaps, and translate technology investment into measurable operational gains without disrupting what's already working.</p>
+        </div>
+        <div class="svc-card reveal">
+          <div class="svc-num">04</div>
+          <h3>Supply Chain &amp; Regulatory Compliance</h3>
+          <p>International logistics and regulatory compliance are disciplines where ambiguity is expensive. We bring direct experience navigating complex supply chains and compliance requirements — and we do it without hand-waving or unnecessary overhead.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════
+       APPROACH  (full-bleed Ink)
+  ════════════════════════════════════ -->
+  <section id="approach" class="section-pad">
+    <div class="wrap">
+      <div class="sh reveal">
+        <span class="eyebrow">How we work</span>
+        <h2>Three principles we don't compromise on</h2>
+        <p>Consulting firms say a lot of things. These are the three we've staked the practice on.</p>
+        <span class="sh-rule"></span>
+      </div>
+      <div class="approach-grid stagger">
+        <div class="ap-item reveal">
+          <div class="ap-num">01</div>
+          <h3>Clarity</h3>
+          <p>We say what we actually think. The answer first, the reasoning second. If something is uncertain, we say so plainly. Most organizational problems get worse when people avoid the direct statement — we don't avoid it.</p>
+        </div>
+        <div class="ap-item reveal">
+          <div class="ap-num">02</div>
+          <h3>Integrity</h3>
+          <p>We own our recommendations. If the evidence changes, we say so — even when that means walking back what we said last week. Being right matters more than looking consistent. You'll always know where we stand and why.</p>
+        </div>
+        <div class="ap-item reveal">
+          <div class="ap-num">03</div>
+          <h3>Partnership</h3>
+          <p>We work alongside you, not at you. Your people know your organization better than we do. We bring outside perspective and structured thinking; you supply the context that makes it actionable. Both halves matter.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════
+       WORK
+  ════════════════════════════════════ -->
+  <section id="work" class="section-pad">
+    <div class="wrap">
+      <div class="sh reveal">
+        <span class="eyebrow">Selected work</span>
+        <h2>Engagements that moved the needle</h2>
+        <p>Case studies are published as client permissions allow.</p>
+        <span class="sh-rule"></span>
+      </div>
+      <div class="work-grid stagger">
+        <div class="work-card reveal">
+          <div class="work-meta">Operations · Supply Chain</div>
+          <h3>International logistics redesign and compliance framework for a multi-region manufacturing operation</h3>
+          <div class="work-divider"></div>
+          <span class="work-badge">Case study coming soon</span>
+        </div>
+        <div class="work-card reveal">
+          <div class="work-meta">Digital Transformation · Private Sector</div>
+          <h3>AI integration roadmap and change management plan for a professional-services firm</h3>
+          <div class="work-divider"></div>
+          <span class="work-badge">Case study coming soon</span>
+        </div>
+        <div class="work-card reveal">
+          <div class="work-meta">Strategy · Nonprofit</div>
+          <h3>Strategic planning and operational restructuring for a regional workforce development organization</h3>
+          <div class="work-divider"></div>
+          <span class="work-badge">Case study coming soon</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════
+       ABOUT
+  ════════════════════════════════════ -->
+  <section id="about" class="section-pad">
+    <div class="wrap">
+      <div class="about-grid">
+        <div class="about-photo reveal">
+          <img src="./images/owner-headshot.png" alt="Brian Wallis, Founder of Class IX Consulting">
+        </div>
+        <div class="about-content reveal">
+          <span class="eyebrow about-eyebrow">Founder &amp; Principal</span>
+          <div class="about-name">Brian Wallis</div>
+          <div class="about-role">Founder, Class IX Consulting</div>
+          <div class="about-bio">
+            <p>Brian Wallis founded Class IX Consulting after seven years of active duty service as a U.S. Army engineer officer. He holds a Bachelor of Science in Civil Engineering from the University of South Carolina and an MBA from the University of Louisville — the latter completed while serving as a company commander of a Forward Support Company at Fort Knox, Kentucky.</p>
+            <p>His military career concentrated on the disciplines that define CIX's practice today: international supply chain and logistics, regulatory compliance, strategic planning, and developing leaders under pressure. He learned early that most organizational failures trace back to three things — unclear objectives, undisciplined execution, and leaders unwilling to have the direct conversation.</p>
+            <p>Since transitioning to the private sector, Brian has consulted with clients across commercial, nonprofit, and public-sector engagements in supply chain optimization, digital transformation, AI integration, and process redesign. He brings the same operational discipline to each engagement: define the problem plainly, build a plan that survives contact with reality, and stay through the execution.</p>
+            <p>Based in Charleston, South Carolina.</p>
+          </div>
+          <div class="value-tags">
+            <span class="vtag">Clarity</span>
+            <span class="vtag">Integrity</span>
+            <span class="vtag">Adaptability</span>
+            <span class="vtag">Partnership</span>
+            <span class="vtag">Mission Focus</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════
+       CONTACT
+  ════════════════════════════════════ -->
+  <section id="contact" class="section-pad">
+    <div class="wrap">
+      <div class="sh reveal">
+        <span class="eyebrow">Get in touch</span>
+        <h2>Start a conversation</h2>
+        <p>Most engagements begin with a 30-minute call. Tell us what you're working on and we'll tell you honestly whether we can help.</p>
+        <span class="sh-rule"></span>
+      </div>
+      <div class="contact-grid">
+        <form
+          class="cform reveal"
+          id="contact-form"
+          action="https://formspree.io/f/xaqvanll"
+          method="POST"
+          novalidate
+          aria-label="Contact form"
+        >
+          <div class="form-row">
+            <div class="fg">
+              <label for="f-name">Name</label>
+              <input type="text" id="f-name" name="name" autocomplete="name" placeholder="Your name" required>
+            </div>
+            <div class="fg">
+              <label for="f-email">Email</label>
+              <input type="email" id="f-email" name="email" autocomplete="email" placeholder="you@example.com" required>
+            </div>
+          </div>
+          <div class="fg">
+            <label for="f-company">Company or organization</label>
+            <input type="text" id="f-company" name="company" autocomplete="organization" placeholder="Where you work">
+          </div>
+          <div class="fg">
+            <label for="f-message">What are you working on?</label>
+            <textarea id="f-message" name="message" placeholder="Describe the problem or project. Short is fine." required></textarea>
+          </div>
+          <div>
+            <button type="submit" class="btn btn-orange">Send message</button>
+          </div>
+          <p class="form-note">Or reach us directly at <a href="mailto:brian@cixcon.com">brian@cixcon.com</a>.</p>
+          <div class="form-success" id="form-success">
+            <strong>Message received.</strong> We'll follow up within one business day.
+          </div>
+        </form>
+
+        <div class="cinfo reveal">
+          <div>
+            <div class="ci-label">Email</div>
+            <div class="ci-body">
+              <a href="mailto:brian@cixcon.com">brian@cixcon.com</a>
+            </div>
+          </div>
+          <div>
+            <div class="ci-label">Phone</div>
+            <div class="ci-body">
+              <a href="tel:+18434572072">(843) 457-2072</a>
+            </div>
+          </div>
+          <div>
+            <div class="ci-label">Location</div>
+            <div class="ci-body">
+              <span>Charleston, South Carolina</span>
+            </div>
+          </div>
+          <div>
+            <div class="ci-label">Online</div>
+            <div class="ci-body">
+              <a href="https://cixcon.com">cixcon.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════
+       FOOTER
+  ════════════════════════════════════ -->
+  <footer>
+    <div class="wrap">
+      <div class="ft-logo-plate">
+        <img src="./images/CIX-Full-Brand.png" alt="Class IX Consulting">
+      </div>
+      <div class="ft-cols">
+        <div>
+          <div class="ft-col-head">Location</div>
+          <div class="ft-col-body">
+            <span>Charleston, South Carolina</span>
+          </div>
+        </div>
+        <div>
+          <div class="ft-col-head">Contact</div>
+          <div class="ft-col-body">
+            <a href="mailto:brian@cixcon.com">brian@cixcon.com</a>
+            <a href="tel:+18434572072">(843) 457-2072</a>
+          </div>
+        </div>
+        <div>
+          <div class="ft-col-head">Online</div>
+          <div class="ft-col-body">
+            <a href="https://cixcon.com">cixcon.com</a>
+          </div>
+        </div>
+      </div>
+      <div class="ft-rule"></div>
+      <div class="ft-bottom">
+        <span class="ft-copy">© 2026 Class IX Consulting. All rights reserved.</span>
+        <span class="ft-tagline">Clarity. Steadiness. Progress.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+
+      /* ── Sticky nav ── */
+      var nav  = document.getElementById('site-nav');
+      var hero = document.getElementById('hero');
+
+      function checkScroll() {
+        if (window.scrollY > hero.offsetHeight * 0.4) {
+          nav.classList.add('scrolled');
+        } else {
+          nav.classList.remove('scrolled');
+        }
+      }
+      window.addEventListener('scroll', checkScroll, { passive: true });
+      checkScroll();
+
+      /* ── Hamburger / mobile overlay ── */
+      var btn     = document.getElementById('hamburger');
+      var overlay = document.getElementById('mobile-overlay');
+      var closeB  = document.getElementById('mobile-close');
+      var links   = document.querySelectorAll('.mob-link');
+
+      function openMenu() {
+        overlay.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeMenu() {
+        overlay.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+
+      btn.addEventListener('click', openMenu);
+      closeB.addEventListener('click', closeMenu);
+      links.forEach(function (l) { l.addEventListener('click', closeMenu); });
+
+      /* ── Contact form (Formspree AJAX) ── */
+      var form    = document.getElementById('contact-form');
+      var success = document.getElementById('form-success');
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var data = new FormData(form);
+        fetch(form.action, {
+          method: 'POST',
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        }).then(function (res) {
+          if (res.ok) {
+            form.reset();
+            success.style.display = 'block';
+          } else {
+            alert('Something went wrong. Please email brian@cixcon.com directly.');
+          }
+        }).catch(function () {
+          alert('Something went wrong. Please email brian@cixcon.com directly.');
+        });
+      });
+
+      /* ── Scroll reveal (IntersectionObserver) ── */
+      var reveals = document.querySelectorAll('.reveal');
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.10, rootMargin: '0px 0px -40px 0px' });
+
+      reveals.forEach(function (el) { io.observe(el); });
+
+      /* ── Smooth-scroll with nav offset ── */
+      document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+        a.addEventListener('click', function (e) {
+          var id = this.getAttribute('href');
+          var target = document.querySelector(id);
+          if (!target) return;
+          e.preventDefault();
+          var offset = nav.offsetHeight + 16;
+          var top = target.getBoundingClientRect().top + window.scrollY - offset;
+          window.scrollTo({ top: top, behavior: 'smooth' });
+        });
+      });
+
+    })();
+  </script>
 
 </body>
 </html>
