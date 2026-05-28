@@ -617,15 +617,28 @@
     ════════════════════════════════════════════════ */
     footer {
       background: var(--ink);
-      padding: 72px 0 40px;
+      padding: 56px 0 36px;
     }
     .ft-logo-plate {
       display: inline-flex;
       background: var(--paper);
       border-radius: 6px;
       padding: 10px 16px;
-      margin-bottom: 52px;
+      margin-bottom: 32px;
     }
+    .ft-links {
+      display: flex;
+      gap: 32px;
+      margin-bottom: 32px;
+    }
+    .ft-links a {
+      font-size: 14px;
+      color: rgba(250,247,242,0.50);
+      text-decoration: none;
+      border-bottom: none;
+      transition: color 140ms;
+    }
+    .ft-links a:hover { color: var(--paper); }
     .ft-logo-plate img { width: 136px; height: auto; }
 
     .ft-cols {
@@ -957,27 +970,9 @@
       <div class="ft-logo-plate">
         <img src="./images/CIX-Full-Brand.png" alt="Class IX Consulting">
       </div>
-      <div class="ft-cols">
-        <div>
-          <div class="ft-col-head">Location</div>
-          <div class="ft-col-body">
-            <span>Charleston, South Carolina</span>
-          </div>
-        </div>
-        <div>
-          <div class="ft-col-head">Contact</div>
-          <div class="ft-col-body">
-            <a href="mailto:brian@cixcon.com">brian@cixcon.com</a>
-            <a href="tel:+18434572072">(843) 457-2072</a>
-          </div>
-        </div>
-        <div>
-          <div class="ft-col-head">Online</div>
-          <div class="ft-col-body">
-            <a href="https://cixcon.com">cixcon.com</a>
-            <a href="https://www.linkedin.com/company/class-ix-consulting/" target="_blank" rel="noopener">LinkedIn</a>
-          </div>
-        </div>
+      <div class="ft-links">
+        <a href="https://cixcon.com">cixcon.com</a>
+        <a href="https://www.linkedin.com/company/class-ix-consulting/" target="_blank" rel="noopener">LinkedIn</a>
       </div>
       <div class="ft-rule"></div>
       <div class="ft-bottom">
