@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JJVH26CXZ2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JJVH26CXZ2');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>Page Not Found — Class IX Consulting</title>
+  <link rel="icon" href="./images/CIX-Logo_BIMI.svg" type="image/svg+xml">
+  <link rel="icon" href="./images/CIX-Compact.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    img, svg { display: block; max-width: 100%; }
+
+    :root {
+      --blue:   #29ABE2;
+      --orange: #FF9600;
+      --tan:    #C69C6D;
+      --ink:    #1F2A36;
+      --slate:  #5A6772;
+      --paper:  #FAF7F2;
+      --white:  #FFFFFF;
+      --border: rgba(31,42,54,0.10);
+      --serif:  "Source Serif 4", Georgia, serif;
+      --sans:   "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --ease:   cubic-bezier(0.22,0.61,0.36,1);
+    }
+
+    html, body { height: 100%; }
+
+    body {
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.55;
+      color: var(--ink);
+      background: var(--paper);
+      -webkit-font-smoothing: antialiased;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    /* Grain */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 200px 200px;
+      opacity: 0.04;
+    }
+
+    .wrap {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 40px;
+      width: 100%;
+    }
+    @media (max-width: 768px) { .wrap { padding: 0 24px; } }
+
+    /* Nav */
+    .nav {
+      padding: 20px 0;
+      background: rgba(250,247,242,0.92);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      box-shadow: 0 1px 0 rgba(31,42,54,0.07);
+    }
+    .nav-logo img { width: 150px; height: auto; }
+
+    /* Main */
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 0;
+    }
+
+    .error-block {
+      text-align: center;
+      max-width: 520px;
+    }
+
+    .error-code {
+      font-family: var(--serif);
+      font-size: clamp(80px, 15vw, 140px);
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1;
+      letter-spacing: -0.03em;
+      margin-bottom: 4px;
+      opacity: 0.08;
+    }
+
+    .error-rule {
+      width: 40px;
+      height: 2px;
+      background: var(--orange);
+      margin: 0 auto 28px;
+    }
+
+    .error-heading {
+      font-family: var(--serif);
+      font-size: clamp(22px, 3vw, 28px);
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .error-sub {
+      font-size: 16px;
+      color: var(--slate);
+      line-height: 1.65;
+      margin-bottom: 36px;
+    }
+
+    .btn {
+      display: inline-block;
+      font-family: var(--sans);
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1;
+      padding: 14px 28px;
+      border-radius: 4px;
+      text-decoration: none;
+      background: var(--orange);
+      color: var(--white);
+      transition: background 140ms var(--ease), transform 140ms var(--ease), box-shadow 140ms var(--ease);
+    }
+    .btn:hover {
+      background: #C46F00;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--ink);
+      padding: 36px 0;
+    }
+    .ft-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .ft-copy {
+      font-size: 13px;
+      color: rgba(250,247,242,0.33);
+    }
+    .ft-tagline {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 15px;
+      color: rgba(250,247,242,0.50);
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--blue);
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="wrap">
+      <a href="/" aria-label="Class IX Consulting — home">
+        <img src="./images/CIX-Full-Brand.png" alt="Class IX Consulting" style="width:150px;height:auto;">
+      </a>
+    </div>
+  </nav>
+
+  <main>
+    <div class="wrap">
+      <div class="error-block">
+        <div class="error-code">404</div>
+        <div class="error-rule"></div>
+        <h1 class="error-heading">This page doesn't exist.</h1>
+        <p class="error-sub">The link may be broken or the page may have moved. Head back to the homepage and we'll get you where you need to go.</p>
+        <a href="/" class="btn">Back to homepage</a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="ft-bottom">
+        <span class="ft-copy">© 2026 Class IX Consulting. All rights reserved.</span>
+        <span class="ft-tagline">Clarity. Accountability. Ownership. Partnership.</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
