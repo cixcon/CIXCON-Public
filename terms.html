@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Terms of Use — Class IX Consulting">
+  <title>Terms of Use — Class IX Consulting</title>
+  <link rel="icon" href="./images/CIX-Compact.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    img, svg { display: block; max-width: 100%; }
+    ul, ol { list-style: none; }
+    button { font-family: inherit; cursor: pointer; }
+
+    :root {
+      --blue:       #29ABE2;
+      --orange:     #FF9600;
+      --tan:        #C69C6D;
+      --ink:        #1F2A36;
+      --slate:      #5A6772;
+      --paper:      #FAF7F2;
+      --white:      #FFFFFF;
+      --border:     rgba(31,42,54,0.10);
+      --serif:      "Source Serif 4", Georgia, serif;
+      --sans:       "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --ease:       cubic-bezier(0.22,0.61,0.36,1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.55;
+      color: var(--ink);
+      background: var(--paper);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+    }
+
+    /* Grain texture */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 200px 200px;
+      opacity: 0.04;
+    }
+
+    .wrap {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+    @media (max-width: 768px) { .wrap { padding: 0 24px; } }
+
+    /* ── Nav ── */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      padding: 20px 0;
+      background: rgba(250,247,242,0.92);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      box-shadow: 0 1px 0 rgba(31,42,54,0.07);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo img { width: 150px; height: auto; }
+    .nav-back {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--slate);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 140ms var(--ease);
+    }
+    .nav-back:hover { color: var(--blue); }
+    .nav-back::before { content: '←'; }
+
+    /* ── Page content ── */
+    .page-content {
+      padding: 140px 0 112px;
+      max-width: 720px;
+    }
+
+    .page-eyebrow {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--slate);
+      margin-bottom: 16px;
+    }
+
+    .page-title {
+      font-family: var(--serif);
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.1;
+      margin-bottom: 10px;
+    }
+
+    .page-date {
+      font-size: 13px;
+      color: var(--slate);
+      margin-bottom: 48px;
+    }
+
+    .page-rule {
+      width: 40px;
+      height: 2px;
+      background: var(--blue);
+      margin-bottom: 48px;
+    }
+
+    .prose h2 {
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.3;
+      margin-top: 48px;
+      margin-bottom: 12px;
+    }
+
+    .prose h2:first-child { margin-top: 0; }
+
+    .prose p {
+      font-size: 16px;
+      color: var(--slate);
+      line-height: 1.75;
+      margin-bottom: 16px;
+    }
+
+    .prose p:last-child { margin-bottom: 0; }
+
+    .prose a {
+      color: var(--blue);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 140ms;
+    }
+    .prose a:hover { border-bottom-color: var(--blue); }
+
+    .prose ul {
+      list-style: none;
+      margin-bottom: 16px;
+    }
+    .prose ul li {
+      font-size: 16px;
+      color: var(--slate);
+      line-height: 1.75;
+      padding-left: 18px;
+      position: relative;
+      margin-bottom: 6px;
+    }
+    .prose ul li::before {
+      content: '–';
+      position: absolute;
+      left: 0;
+      color: var(--tan);
+    }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--ink);
+      padding: 56px 0 36px;
+    }
+    .ft-logo-plate {
+      display: inline-flex;
+      background: var(--paper);
+      border-radius: 6px;
+      padding: 10px 16px;
+      margin-bottom: 32px;
+    }
+    .ft-logo-plate img { width: 136px; height: auto; }
+    .ft-rule {
+      height: 1px;
+      background: rgba(250,247,242,0.10);
+      margin-bottom: 28px;
+    }
+    .ft-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .ft-copy {
+      font-size: 13px;
+      color: rgba(250,247,242,0.33);
+    }
+    .ft-tagline {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 15px;
+      color: rgba(250,247,242,0.50);
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--blue);
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="wrap nav-inner">
+      <a href="/" class="nav-logo" aria-label="Class IX Consulting — home">
+        <img src="./images/CIX-Full-Brand.png" alt="Class IX Consulting">
+      </a>
+      <a href="/" class="nav-back">Back to site</a>
+    </div>
+  </nav>
+
+  <main>
+    <div class="wrap">
+      <div class="page-content">
+        <span class="page-eyebrow">Legal</span>
+        <h1 class="page-title">Terms of Use</h1>
+        <p class="page-date">Effective date: May 28, 2026</p>
+        <div class="page-rule"></div>
+
+        <div class="prose">
+
+          <h2>Acceptance of terms</h2>
+          <p>By accessing or using cixcon.com (the "Site"), you agree to be bound by these Terms of Use. If you do not agree, please do not use the Site.</p>
+
+          <h2>Intellectual property</h2>
+          <p>All content on this Site — including text, graphics, logos, and imagery — is the property of Class IX Consulting, LLC and is protected by applicable copyright and trademark laws. You may not reproduce, distribute, or republish any content from this Site without our prior written permission.</p>
+
+          <h2>No professional advice</h2>
+          <p>The content on this Site is provided for general informational purposes only. Nothing on this Site constitutes professional consulting, legal, financial, or other professional advice. Viewing or interacting with this Site does not establish a client relationship with Class IX Consulting. For advice specific to your situation, contact us directly to discuss an engagement.</p>
+
+          <h2>No warranty</h2>
+          <p>This Site is provided on an "as is" and "as available" basis. Class IX Consulting makes no representations or warranties of any kind, express or implied, regarding the accuracy, completeness, or reliability of any content on the Site. We reserve the right to update or remove content at any time without notice.</p>
+
+          <h2>Limitation of liability</h2>
+          <p>To the fullest extent permitted by law, Class IX Consulting shall not be liable for any direct, indirect, incidental, consequential, or punitive damages arising from your use of, or inability to use, this Site or its content.</p>
+
+          <h2>Third-party links</h2>
+          <p>This Site may contain links to third-party websites, including LinkedIn and Formspree. These links are provided for convenience only. Class IX Consulting does not control, endorse, or assume any responsibility for the content or practices of any third-party sites. Accessing those sites is at your own risk.</p>
+
+          <h2>Governing law</h2>
+          <p>These Terms of Use are governed by the laws of the State of South Carolina, without regard to its conflict of law provisions. Any disputes arising under these terms shall be subject to the exclusive jurisdiction of the courts located in Charleston County, South Carolina.</p>
+
+          <h2>Changes to these terms</h2>
+          <p>We may update these Terms of Use from time to time. Changes take effect when posted to this page. The effective date at the top of this page reflects the date of the most recent update. Continued use of the Site after any changes constitutes your acceptance of the revised terms.</p>
+
+          <h2>Contact</h2>
+          <p>Questions about these terms? Reach us at <a href="mailto:brian@cixcon.com">brian@cixcon.com</a> or by phone at <a href="tel:+18434572072">(843) 457-2072</a>.</p>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="ft-logo-plate">
+        <img src="./images/CIX-Full-Brand.png" alt="Class IX Consulting">
+      </div>
+      <div class="ft-rule"></div>
+      <div class="ft-bottom">
+        <span class="ft-copy">© 2026 Class IX Consulting. All rights reserved. &nbsp;·&nbsp; <a href="/privacy.html" style="color:inherit;text-decoration:none;border-bottom:1px solid rgba(250,247,242,0.20);transition:color 140ms;" onmouseover="this.style.color='#FAF7F2'" onmouseout="this.style.color='inherit'">Privacy Policy</a> &nbsp;·&nbsp; <a href="/terms.html" style="color:inherit;text-decoration:none;border-bottom:1px solid rgba(250,247,242,0.20);transition:color 140ms;" onmouseover="this.style.color='#FAF7F2'" onmouseout="this.style.color='inherit'">Terms of Use</a></span>
+        <span class="ft-tagline">Clarity. Accountability. Ownership. Partnership.</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
