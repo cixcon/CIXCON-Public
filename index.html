@@ -1006,6 +1006,13 @@
       font-size: 13px;
       color: rgba(250,247,242,0.52);
     }
+    .ft-legal-link {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(250,247,242,0.20);
+      transition: color 140ms;
+    }
+    .ft-legal-link:hover { color: var(--paper); }
     .ft-tagline {
       font-family: var(--serif);
       font-style: italic;
@@ -1330,7 +1337,7 @@
       </div>
       <div class="ft-rule"></div>
       <div class="ft-bottom">
-        <span class="ft-copy">© 2026 Class IX Consulting. All rights reserved. &nbsp;·&nbsp; <a href="/privacy.html" style="color:inherit;text-decoration:none;border-bottom:1px solid rgba(250,247,242,0.20);transition:color 140ms;" onmouseover="this.style.color='#FAF7F2'" onmouseout="this.style.color='inherit'">Privacy Policy</a> &nbsp;·&nbsp; <a href="/terms.html" style="color:inherit;text-decoration:none;border-bottom:1px solid rgba(250,247,242,0.20);transition:color 140ms;" onmouseover="this.style.color='#FAF7F2'" onmouseout="this.style.color='inherit'">Terms of Use</a></span>
+        <span class="ft-copy">© 2026 Class IX Consulting. All rights reserved. &nbsp;·&nbsp; <a href="/privacy.html" class="ft-legal-link">Privacy Policy</a> &nbsp;·&nbsp; <a href="/terms.html" class="ft-legal-link">Terms of Use</a></span>
         <span class="ft-tagline">Clarity. Accountability. Ownership. Partnership.</span>
       </div>
     </div>
@@ -1383,6 +1390,9 @@
 
       form.addEventListener('submit', function (e) {
         e.preventDefault();
+        var submitBtn = form.querySelector('[type="submit"]');
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending…';
         var data = new FormData(form);
         fetch(form.action, {
           method: 'POST',
@@ -1392,11 +1402,16 @@
           if (res.ok) {
             form.reset();
             success.style.display = 'block';
+            submitBtn.style.display = 'none';
           } else {
             alert('Something went wrong. Please email brian@cixcon.com directly.');
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Send message';
           }
         }).catch(function () {
           alert('Something went wrong. Please email brian@cixcon.com directly.');
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Send message';
         });
       });
 
@@ -1445,6 +1460,7 @@
       document.querySelectorAll('a[href^="#"]').forEach(function (a) {
         a.addEventListener('click', function (e) {
           var id = this.getAttribute('href');
+          if (!id || id === '#') return;   /* guard: bare # throws on querySelector */
           var target = document.querySelector(id);
           if (!target) return;
           e.preventDefault();
