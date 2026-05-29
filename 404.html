@@ -13,16 +13,29 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex">
+  <meta name="description" content="Page not found — Class IX Consulting">
   <title>Page Not Found — Class IX Consulting</title>
+  <link rel="canonical" href="https://cixcon.com/404.html">
   <link rel="icon" href="./images/CIX-Logo_BIMI.svg" type="image/svg+xml">
   <link rel="icon" href="./images/CIX-Compact.png" type="image/png">
+  <link rel="preload" as="image" href="./images/CIX-Full-Brand.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400;1,8..60,600&display=swap">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400;1,8..60,600&display=swap"></noscript>
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     img, svg { display: block; max-width: 100%; }
+
+    /* Skip link */
+    .skip-link {
+      position: absolute; top: -100%; left: 16px; z-index: 9999;
+      background: var(--ink); color: var(--paper);
+      font-size: 14px; font-weight: 700; padding: 10px 20px;
+      border-radius: 0 0 4px 4px; text-decoration: none; transition: top 160ms;
+    }
+    .skip-link:focus { top: 0; }
 
     :root {
       --blue:   #29ABE2;
@@ -81,7 +94,6 @@
       -webkit-backdrop-filter: blur(8px);
       box-shadow: 0 1px 0 rgba(31,42,54,0.07);
     }
-    .nav-logo img { width: 150px; height: auto; }
 
     /* Main */
     main {
@@ -164,13 +176,18 @@
     }
     .ft-copy {
       font-size: 13px;
-      color: rgba(250,247,242,0.33);
+      color: rgba(250,247,242,0.72);
     }
+    .ft-legal-link {
+      color: inherit; text-decoration: none;
+      border-bottom: 1px solid rgba(250,247,242,0.20); transition: color 140ms;
+    }
+    .ft-legal-link:hover { color: var(--paper); }
     .ft-tagline {
       font-family: var(--serif);
       font-style: italic;
       font-size: 15px;
-      color: rgba(250,247,242,0.50);
+      color: rgba(250,247,242,0.72);
     }
 
     :focus-visible {
@@ -182,18 +199,20 @@
 </head>
 <body>
 
-  <nav class="nav">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <nav class="nav" aria-label="Main navigation">
     <div class="wrap">
       <a href="/" aria-label="Class IX Consulting — home">
-        <img src="./images/CIX-Full-Brand.png" alt="Class IX Consulting" style="width:150px;height:auto;">
+        <img src="./images/CIX-Full-Brand.png" alt="Class IX Consulting" width="150" height="40" fetchpriority="high">
       </a>
     </div>
   </nav>
 
-  <main>
+  <main id="main-content">
     <div class="wrap">
       <div class="error-block">
-        <div class="error-code">404</div>
+        <div class="error-code" aria-hidden="true">404</div>
         <div class="error-rule"></div>
         <h1 class="error-heading">This page doesn't exist.</h1>
         <p class="error-sub">The link may be broken or the page may have moved. Head back to the homepage and we'll get you where you need to go.</p>
@@ -205,11 +224,18 @@
   <footer>
     <div class="wrap">
       <div class="ft-bottom">
-        <span class="ft-copy">© 2026 Class IX Consulting. All rights reserved.</span>
+        <span class="ft-copy">© 2026 Class IX Consulting. All rights reserved. &nbsp;·&nbsp; <a href="/privacy.html" class="ft-legal-link">Privacy Policy</a> &nbsp;·&nbsp; <a href="/terms.html" class="ft-legal-link">Terms of Use</a></span>
         <span class="ft-tagline">Clarity. Accountability. Ownership. Partnership.</span>
       </div>
     </div>
   </footer>
+
+  <script>
+    // Track 404 hits in GA for broken link monitoring
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'page_not_found', { page_path: window.location.pathname });
+    }
+  </script>
 
 </body>
 </html>
