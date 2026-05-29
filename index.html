@@ -510,6 +510,7 @@
       );
       background-size: 400% 400%;
       animation: heroFlow 20s ease infinite;
+      will-change: background-position;
       padding: 180px 0 140px;
     }
     @media (max-width: 768px) { #hero { padding: 120px 0 80px; } }
@@ -553,7 +554,10 @@
       grid-template-columns: repeat(2, 1fr);
       gap: 20px;
     }
-    @media (max-width: 768px) { .services-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 768px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .svc-card { padding: 24px; }
+    }
 
     .svc-card {
       background: var(--paper);
@@ -688,7 +692,10 @@
       grid-template-columns: repeat(2, 1fr);
       gap: 20px;
     }
-    @media (max-width: 768px) { .work-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 768px) {
+      .work-grid { grid-template-columns: 1fr; }
+      .work-card { padding: 24px; }
+    }
 
     .work-card {
       background: var(--white);
@@ -1039,7 +1046,7 @@
   <nav class="nav" id="site-nav" aria-label="Main navigation">
     <div class="wrap nav-inner">
       <a href="#hero" class="nav-logo" aria-label="Class IX Consulting — home">
-        <img src="./images/CIX-Full-Brand.png" alt="Class IX Consulting">
+        <img src="./images/CIX-Full-Brand.png" alt="Class IX Consulting" width="150" height="40" fetchpriority="high">
       </a>
       <ul class="nav-links" role="list">
         <li><a href="#services">Services</a></li>
@@ -1208,7 +1215,7 @@
     <div class="wrap">
       <div class="about-grid">
         <div class="about-photo reveal">
-          <img src="./images/owner-headshot.png" alt="Brian Wallis, Founder of Class IX Consulting">
+          <img src="./images/owner-headshot.png" alt="Brian Wallis, Founder of Class IX Consulting" width="260" height="320" loading="lazy">
         </div>
         <div class="about-content reveal">
           <span class="eyebrow about-eyebrow">Founder &amp; Principal</span>
@@ -1310,7 +1317,7 @@
   <footer>
     <div class="wrap">
       <div class="ft-logo-plate">
-        <img src="./images/CIX-Full-Brand.png" alt="Class IX Consulting">
+        <img src="./images/CIX-Full-Brand.png" alt="Class IX Consulting" width="136" height="36" loading="lazy">
       </div>
       <div class="ft-links">
         <a href="https://cixcon.com">cixcon.com</a>
