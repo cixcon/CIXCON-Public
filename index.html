@@ -79,6 +79,7 @@
     ]
   }
   </script>
+  <link rel="canonical" href="https://cixcon.com/">
   <link rel="icon" href="./images/CIX-Logo_BIMI.svg" type="image/svg+xml">
   <link rel="icon" href="./images/CIX-Compact.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -397,17 +398,42 @@
       padding-top: calc(112px + var(--cut)) !important;
     }
 
-    /* About — angled top-right-high ↙ */
-    #about {
+    /* CTA Band — angled top-right-high ↙ + bottom ↘ */
+    .cta-band {
       position: relative;
       z-index: 5;
+      background: var(--blue);
       margin-top: calc(-1 * var(--cut));
-      clip-path: polygon(0 0, 100% var(--cut), 100% 100%, 0 100%);
-      padding-top: calc(112px + var(--cut)) !important;
+      clip-path: polygon(0 0, 100% var(--cut), 100% calc(100% - var(--cut)), 0 100%);
+      padding: calc(88px + var(--cut)) 0 calc(88px + var(--cut));
+      text-align: center;
     }
 
-    /* Contact — angled top-left-high ↘ */
-    #contact {
+    .cta-inner { max-width: 600px; margin: 0 auto; }
+
+    .cta-band .eyebrow { color: rgba(255,255,255,0.60); margin-bottom: 18px; }
+
+    .cta-band h2 {
+      font-family: var(--serif);
+      font-size: clamp(26px, 3vw, 36px);
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 36px;
+      text-wrap: pretty;
+    }
+
+    .btn-white {
+      background: var(--white);
+      color: var(--blue);
+    }
+    .btn-white:hover {
+      background: var(--paper);
+      color: var(--blue-700);
+    }
+
+    /* About — angled top-left-high ↘ */
+    #about {
       position: relative;
       z-index: 6;
       margin-top: calc(-1 * var(--cut));
@@ -415,24 +441,34 @@
       padding-top: calc(112px + var(--cut)) !important;
     }
 
-    /* Footer — angled top-right-high ↙ */
-    footer {
+    /* Contact — angled top-right-high ↙ */
+    #contact {
       position: relative;
       z-index: 7;
       margin-top: calc(-1 * var(--cut));
       clip-path: polygon(0 0, 100% var(--cut), 100% 100%, 0 100%);
+      padding-top: calc(112px + var(--cut)) !important;
+    }
+
+    /* Footer — angled top-left-high ↘ */
+    footer {
+      position: relative;
+      z-index: 8;
+      margin-top: calc(-1 * var(--cut));
+      clip-path: polygon(0 var(--cut), 100% 0, 100% 100%, 0 100%);
       padding-top: calc(56px + var(--cut)) !important;
     }
 
     /* Mobile: remove diagonal cuts — they look odd at narrow widths */
     @media (max-width: 768px) {
-      #services, #approach, #work, #about, #contact, footer {
+      #services, #approach, #work, .cta-band, #about, #contact, footer {
         clip-path: none;
         margin-top: 0;
       }
       #services  { padding-top: 64px !important; }
       #approach  { padding-top: 64px !important; padding-bottom: 64px !important; }
       #work      { padding-top: 64px !important; }
+      .cta-band  { padding: 64px 0 !important; }
       #about     { padding-top: 64px !important; }
       #contact   { padding-top: 64px !important; }
       footer     { padding-top: 56px !important; }
@@ -1092,6 +1128,19 @@
           <div class="work-meta">Leadership &amp; Team Development</div>
           <h3>Designed and delivered a leadership development program for mid-level managers and team leads — building interpersonal skills, team motivation strategies, and most importantly, the capability to develop their own people long after the engagement ended.</h3>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════
+       CTA BAND
+  ════════════════════════════════════ -->
+  <section class="cta-band">
+    <div class="wrap">
+      <div class="cta-inner reveal">
+        <span class="eyebrow">Ready to close the gap?</span>
+        <h2>Most engagements start with a 15-minute conversation.</h2>
+        <a href="#contact" class="btn btn-white">Let's talk &rarr;</a>
       </div>
     </div>
   </section>
