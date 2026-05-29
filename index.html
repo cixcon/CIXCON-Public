@@ -84,7 +84,9 @@
   <link rel="icon" href="./images/CIX-Compact.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet">
+  <!-- Load fonts async to eliminate render-blocking -->
+  <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400;1,8..60,600&display=swap">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400;1,8..60,600&display=swap"></noscript>
 
   <style>
     /* ── Reset ── */
@@ -151,11 +153,10 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* Hero gradient drift */
-    @keyframes heroFlow {
-      0%   { background-position: 0% 50%; }
-      50%  { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+    /* Hero gradient drift — uses opacity (GPU compositable, no repaint) */
+    @keyframes heroFade {
+      0%   { opacity: 0; }
+      100% { opacity: 1; }
     }
 
     /* Approach ambient light pulse */
@@ -508,11 +509,23 @@
         #F6EEE3 65%,
         #FAF7F2 100%
       );
-      background-size: 400% 400%;
-      animation: heroFlow 20s ease infinite;
-      will-change: background-position;
       padding: 180px 0 140px;
+      position: relative;
+      overflow: hidden;
     }
+    /* Animated colour wash — opacity is GPU compositable */
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, #EAF5FC 0%, #F6EEE3 60%, #EAF5FC 100%);
+      animation: heroFade 10s ease-in-out infinite alternate;
+      will-change: opacity;
+      pointer-events: none;
+      z-index: 0;
+    }
+    #hero .wrap { position: relative; z-index: 1; }
+
     @media (max-width: 768px) { #hero { padding: 120px 0 80px; } }
 
     .hero-eyebrow {
@@ -717,7 +730,7 @@
       font-weight: 700;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--tan);
+      color: #8B6A3E; /* darkened tan for contrast compliance */
     }
     .work-card p {
       font-size: 15px;
@@ -996,7 +1009,7 @@
     }
     .ft-copy {
       font-size: 13px;
-      color: rgba(250,247,242,0.33);
+      color: rgba(250,247,242,0.52);
     }
     .ft-tagline {
       font-family: var(--serif);
@@ -1073,6 +1086,8 @@
     <a href="#about" class="mob-link">About</a>
     <a href="#contact" class="mob-link">Contact</a>
   </div>
+
+  <main>
 
   <!-- ════════════════════════════════════
        HERO
@@ -1310,6 +1325,8 @@
       </div>
     </div>
   </section>
+
+  </main>
 
   <!-- ════════════════════════════════════
        FOOTER
