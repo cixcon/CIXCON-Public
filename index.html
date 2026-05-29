@@ -61,8 +61,6 @@
     "alternateName": "CIX",
     "description": "Management consulting firm specializing in strategy, operations, digital transformation, and leadership development.",
     "url": "https://cixcon.com",
-    "telephone": "+18434572072",
-    "email": "brian@cixcon.com",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Charleston",
@@ -82,6 +80,7 @@
   <link rel="canonical" href="https://cixcon.com/">
   <link rel="icon" href="./images/CIX-Logo_BIMI.svg" type="image/svg+xml">
   <link rel="icon" href="./images/CIX-Compact.png" type="image/png">
+  <link rel="preload" as="image" href="./images/CIX-Full-Brand.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <!-- Load fonts async to eliminate render-blocking -->
@@ -95,6 +94,24 @@
     ul, ol { list-style: none; }
     button { font-family: inherit; cursor: pointer; }
     input, textarea { font-family: inherit; }
+
+    /* ── Skip link ── */
+    .skip-link {
+      position: absolute;
+      top: -100%;
+      left: 16px;
+      z-index: 9999;
+      background: var(--ink);
+      color: var(--paper);
+      font-family: var(--sans);
+      font-size: 14px;
+      font-weight: 700;
+      padding: 10px 20px;
+      border-radius: 0 0 4px 4px;
+      text-decoration: none;
+      transition: top 160ms;
+    }
+    .skip-link:focus { top: 0; }
 
     /* ── Tokens ── */
     :root {
@@ -201,6 +218,8 @@
 
     @media (prefers-reduced-motion: reduce) {
       .reveal { transform: none; transition: opacity 280ms linear; }
+      #hero::before { animation: none; }
+      #approach::before, #approach::after { animation: none; }
     }
 
     /* ── Focus ── */
@@ -262,7 +281,7 @@
       transition: background 140ms var(--ease), transform 140ms var(--ease);
       white-space: nowrap;
     }
-    .nav-cta:hover { background: var(--orange-700); transform: translateY(-1px); border-bottom: none; }
+    .nav-cta:hover { background: var(--orange-700); transform: translateY(-1px); }
     @media (max-width: 768px) { .nav-cta { display: none; } }
 
     /* Hamburger */
@@ -299,7 +318,7 @@
       pointer-events: none;
       transition: opacity 220ms var(--ease);
     }
-    .mobile-overlay.open { opacity: 1; pointer-events: all; }
+    .mobile-overlay.open { opacity: 1; pointer-events: auto; }
     .mobile-overlay a {
       font-family: var(--serif);
       font-size: 28px;
@@ -340,7 +359,6 @@
       transition: background 140ms var(--ease), color 140ms var(--ease), transform 140ms var(--ease), box-shadow 140ms var(--ease);
     }
     .btn:hover {
-      border-bottom: none;
       transform: translateY(-2px);
       box-shadow: 0 6px 20px rgba(0,0,0,0.12);
     }
@@ -435,7 +453,7 @@
 
     .cta-inner { max-width: 600px; margin: 0 auto; }
 
-    .cta-band .eyebrow { color: rgba(255,255,255,0.60); margin-bottom: 18px; }
+    .cta-band .eyebrow { color: rgba(31,42,54,0.80); margin-bottom: 18px; }
 
     .cta-band h2 {
       font-family: var(--serif);
@@ -584,14 +602,6 @@
       box-shadow: 0 20px 56px rgba(31,42,54,0.10);
       border-color: rgba(41,171,226,0.28);
     }
-    .svc-num {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: #0E6999; /* darkened blue — passes 4.5:1 on paper */
-      margin-bottom: 14px;
-    }
     .svc-card h3 {
       font-size: 19px;
       font-weight: 700;
@@ -638,8 +648,8 @@
     #approach .wrap { position: relative; z-index: 1; }
 
     #approach .sh h2    { color: var(--paper); }
-    #approach .sh p     { color: rgba(250,247,242,0.60); }
-    #approach .eyebrow  { color: rgba(250,247,242,0.45); }
+    #approach .sh p     { color: rgba(250,247,242,0.82); }
+    #approach .eyebrow  { color: rgba(250,247,242,0.72); }
     #approach .sh-rule  { background: var(--blue); }
 
     .approach-grid {
@@ -668,14 +678,6 @@
       padding: 48px 0 0 48px;
     }
 
-    .ap-num {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--blue);
-      margin-bottom: 16px;
-    }
     .ap-item h3 {
       font-family: var(--serif);
       font-size: 24px;
@@ -686,7 +688,7 @@
     }
     .ap-item p {
       font-size: 15px;
-      color: rgba(250,247,242,0.62);
+      color: rgba(250,247,242,0.82);
       line-height: 1.70;
     }
 
@@ -762,6 +764,7 @@
 
     .about-photo img {
       width: 100%;
+      aspect-ratio: 260 / 320;
       border-radius: 6px;
       border: 1px solid var(--border);
       transition: box-shadow 300ms var(--ease);
@@ -934,7 +937,7 @@
     }
     .ft-links a {
       font-size: 14px;
-      color: rgba(250,247,242,0.50);
+      color: rgba(250,247,242,0.75);
       text-decoration: none;
       border-bottom: none;
       transition: color 140ms;
@@ -972,7 +975,7 @@
       font-weight: 700;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: rgba(250,247,242,0.38);
+      color: rgba(250,247,242,0.65);
       margin-bottom: 12px;
     }
     .ft-col-body {
@@ -983,7 +986,7 @@
     .ft-col-body span,
     .ft-col-body a {
       font-size: 14px;
-      color: rgba(250,247,242,0.58);
+      color: rgba(250,247,242,0.75);
       line-height: 1.7;
       text-decoration: none;
       border-bottom: none;
@@ -1004,7 +1007,7 @@
     }
     .ft-copy {
       font-size: 13px;
-      color: rgba(250,247,242,0.52);
+      color: rgba(250,247,242,0.72);
     }
     .ft-legal-link {
       color: inherit;
@@ -1017,7 +1020,7 @@
       font-family: var(--serif);
       font-style: italic;
       font-size: 15px;
-      color: rgba(250,247,242,0.50);
+      color: rgba(250,247,242,0.72);
     }
 
     /* ── Scroll-to-top button ── */
@@ -1044,7 +1047,7 @@
     }
     .back-to-top.visible {
       opacity: 1;
-      pointer-events: all;
+      pointer-events: auto;
     }
     .back-to-top:hover {
       background: var(--blue);
@@ -1055,12 +1058,14 @@
 </head>
 <body>
 
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
   <!-- ════════════════════════════════════
        NAVIGATION
   ════════════════════════════════════ -->
   <nav class="nav" id="site-nav" aria-label="Main navigation">
     <div class="wrap nav-inner">
-      <a href="#hero" class="nav-logo" aria-label="Class IX Consulting — home">
+      <a href="/" class="nav-logo" aria-label="Class IX Consulting — home">
         <img src="./images/CIX-Full-Brand.png" alt="Class IX Consulting" width="150" height="40" fetchpriority="high">
       </a>
       <ul class="nav-links" role="list">
@@ -1089,7 +1094,7 @@
     <a href="#contact" class="mob-link">Contact</a>
   </div>
 
-  <main>
+  <main id="main-content">
 
   <!-- ════════════════════════════════════
        HERO
@@ -1208,10 +1213,10 @@
   <!-- ════════════════════════════════════
        CTA BAND
   ════════════════════════════════════ -->
-  <section class="cta-band">
+  <section class="cta-band" aria-label="Get in touch">
     <div class="wrap">
       <div class="cta-inner reveal">
-        <span class="eyebrow">Ready to close the gap?</span>
+        <span class="eyebrow" aria-hidden="true">Ready to close the gap?</span>
         <h2>Most engagements start with a 15-minute conversation.</h2>
         <a href="#contact" class="btn btn-white">Let's talk &rarr;</a>
       </div>
@@ -1312,8 +1317,8 @@
             <div class="ci-label">Online</div>
             <div class="ci-body">
               <a href="https://cixcon.com">cixcon.com</a>
-              <a href="https://www.linkedin.com/in/bnwallis/" target="_blank" rel="noopener"><svg class="li-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452H16.89v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a1.958 1.958 0 1 1 0-3.916 1.958 1.958 0 0 1 0 3.916zm1.957 13.019H3.379V9h3.915v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>Brian Wallis</a>
-              <a href="https://www.linkedin.com/company/class-ix-consulting/" target="_blank" rel="noopener"><svg class="li-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452H16.89v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a1.958 1.958 0 1 1 0-3.916 1.958 1.958 0 0 1 0 3.916zm1.957 13.019H3.379V9h3.915v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>Class IX Consulting</a>
+              <a href="https://www.linkedin.com/in/bnwallis/" target="_blank" rel="noopener noreferrer"><svg class="li-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452H16.89v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a1.958 1.958 0 1 1 0-3.916 1.958 1.958 0 0 1 0 3.916zm1.957 13.019H3.379V9h3.915v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>Brian Wallis</a>
+              <a href="https://www.linkedin.com/company/class-ix-consulting/" target="_blank" rel="noopener noreferrer"><svg class="li-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452H16.89v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a1.958 1.958 0 1 1 0-3.916 1.958 1.958 0 0 1 0 3.916zm1.957 13.019H3.379V9h3.915v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>Class IX Consulting</a>
             </div>
           </div>
         </div>
@@ -1333,7 +1338,7 @@
       </div>
       <div class="ft-links">
         <a href="https://cixcon.com">cixcon.com</a>
-        <a href="https://www.linkedin.com/company/class-ix-consulting/" target="_blank" rel="noopener"><svg class="li-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452H16.89v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a1.958 1.958 0 1 1 0-3.916 1.958 1.958 0 0 1 0 3.916zm1.957 13.019H3.379V9h3.915v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
+        <a href="https://www.linkedin.com/company/class-ix-consulting/" target="_blank" rel="noopener noreferrer"><svg class="li-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452H16.89v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a1.958 1.958 0 1 1 0-3.916 1.958 1.958 0 0 1 0 3.916zm1.957 13.019H3.379V9h3.915v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
       </div>
       <div class="ft-rule"></div>
       <div class="ft-bottom">
@@ -1344,7 +1349,7 @@
   </footer>
 
   <!-- Scroll to top -->
-  <button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top"><span aria-hidden="true">↑</span></button>
 
   <script>
     (function () {
@@ -1353,32 +1358,54 @@
       var nav  = document.getElementById('site-nav');
       var hero = document.getElementById('hero');
 
+      var backBtn = document.getElementById('back-to-top');
       function checkScroll() {
-        if (window.scrollY > 80) {
-          nav.classList.add('scrolled');
-        } else {
-          nav.classList.remove('scrolled');
-        }
+        var y = window.scrollY;
+        nav.classList.toggle('scrolled', y > 80);
+        backBtn.classList.toggle('visible', y > 400);
       }
       window.addEventListener('scroll', checkScroll, { passive: true });
       checkScroll();
 
-      /* ── Hamburger / mobile overlay ── */
+      /* ── Hamburger / mobile overlay + focus trap ── */
       var btn     = document.getElementById('hamburger');
       var overlay = document.getElementById('mobile-overlay');
       var closeB  = document.getElementById('mobile-close');
       var links   = document.querySelectorAll('.mob-link');
 
+      function getFocusable() {
+        return Array.from(overlay.querySelectorAll('a, button, [tabindex]:not([tabindex="-1"])'))
+          .filter(function(el) { return !el.disabled; });
+      }
+
       function openMenu() {
         overlay.classList.add('open');
         btn.setAttribute('aria-expanded', 'true');
         document.body.style.overflow = 'hidden';
+        var focusable = getFocusable();
+        if (focusable.length) focusable[0].focus();
       }
       function closeMenu() {
         overlay.classList.remove('open');
         btn.setAttribute('aria-expanded', 'false');
         document.body.style.overflow = '';
+        btn.focus();
       }
+
+      /* Focus trap: cycle within overlay, close on Escape */
+      overlay.addEventListener('keydown', function(e) {
+        var focusable = getFocusable();
+        if (!focusable.length) return;
+        var first = focusable[0], last = focusable[focusable.length - 1];
+        if (e.key === 'Escape') { closeMenu(); return; }
+        if (e.key === 'Tab') {
+          if (e.shiftKey) {
+            if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+          } else {
+            if (document.activeElement === last) { e.preventDefault(); first.focus(); }
+          }
+        }
+      });
 
       btn.addEventListener('click', openMenu);
       closeB.addEventListener('click', closeMenu);
@@ -1390,6 +1417,27 @@
 
       form.addEventListener('submit', function (e) {
         e.preventDefault();
+        /* Basic client-side validation */
+        var name    = form.querySelector('[name="name"]').value.trim();
+        var email   = form.querySelector('[name="email"]').value.trim();
+        var message = form.querySelector('[name="message"]').value.trim();
+        var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        if (!name || !email || !message || !emailOk) {
+          var errMsg = !name ? 'Please enter your name.' :
+                       !email || !emailOk ? 'Please enter a valid email address.' :
+                       'Please describe what you\'re working on.';
+          var errEl = form.querySelector('.form-error');
+          if (!errEl) {
+            errEl = document.createElement('p');
+            errEl.className = 'form-error';
+            errEl.style.cssText = 'color:#B91C1C;font-size:14px;margin-top:-8px;';
+            form.insertBefore(errEl, form.querySelector('[type="submit"]').parentNode);
+          }
+          errEl.textContent = errMsg;
+          return;
+        }
+        var existingErr = form.querySelector('.form-error');
+        if (existingErr) existingErr.remove();
         var submitBtn = form.querySelector('[type="submit"]');
         submitBtn.disabled = true;
         submitBtn.textContent = 'Sending…';
@@ -1448,10 +1496,6 @@
       sections.forEach(function(s) { if (s) sectionObserver.observe(s); });
 
       /* ── Scroll-to-top button ── */
-      var backBtn = document.getElementById('back-to-top');
-      window.addEventListener('scroll', function() {
-        backBtn.classList.toggle('visible', window.scrollY > 400);
-      }, { passive: true });
       backBtn.addEventListener('click', function() {
         window.scrollTo({ top: 0, behavior: 'smooth' });
       });
