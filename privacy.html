@@ -22,20 +22,36 @@
   <meta property="og:title" content="Privacy Policy — Class IX Consulting">
   <meta property="og:description" content="How Class IX Consulting collects, uses, and protects your information.">
   <meta property="og:image" content="https://cixcon.com/images/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Class IX Consulting — Clear thinking. Simple solutions.">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Privacy Policy — Class IX Consulting">
+  <meta name="twitter:description" content="How Class IX Consulting collects, uses, and protects your information.">
   <meta name="twitter:image" content="https://cixcon.com/images/og-image.png">
   <link rel="canonical" href="https://cixcon.com/privacy.html">
   <link rel="icon" href="./images/CIX-Logo_BIMI.svg" type="image/svg+xml">
   <link rel="icon" href="./images/CIX-Compact.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="./images/CIX-Full-Brand.png">
+  <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400;1,8..60,600&display=swap">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400;1,8..60,600&display=swap"></noscript>
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     img, svg { display: block; max-width: 100%; }
     ul, ol { list-style: none; }
     button { font-family: inherit; cursor: pointer; }
+
+    /* Skip link */
+    .skip-link {
+      position: absolute; top: -100%; left: 16px; z-index: 9999;
+      background: var(--ink); color: var(--paper);
+      font-size: 14px; font-weight: 700; padding: 10px 20px;
+      border-radius: 0 0 4px 4px; text-decoration: none; transition: top 160ms;
+    }
+    .skip-link:focus { top: 0; }
 
     :root {
       --blue:       #29ABE2;
@@ -229,13 +245,18 @@
     }
     .ft-copy {
       font-size: 13px;
-      color: rgba(250,247,242,0.33);
+      color: rgba(250,247,242,0.72);
     }
+    .ft-legal-link {
+      color: inherit; text-decoration: none;
+      border-bottom: 1px solid rgba(250,247,242,0.20); transition: color 140ms;
+    }
+    .ft-legal-link:hover { color: var(--paper); }
     .ft-tagline {
       font-family: var(--serif);
       font-style: italic;
       font-size: 15px;
-      color: rgba(250,247,242,0.50);
+      color: rgba(250,247,242,0.72);
     }
 
     :focus-visible {
@@ -247,16 +268,18 @@
 </head>
 <body>
 
-  <nav class="nav">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <nav class="nav" aria-label="Main navigation">
     <div class="wrap nav-inner">
       <a href="/" class="nav-logo" aria-label="Class IX Consulting — home">
-        <img src="./images/CIX-Full-Brand.png" alt="Class IX Consulting">
+        <img src="./images/CIX-Full-Brand.png" alt="Class IX Consulting" width="150" height="40" fetchpriority="high">
       </a>
       <a href="/" class="nav-back">Back to site</a>
     </div>
   </nav>
 
-  <main>
+  <main id="main-content">
     <div class="wrap">
       <div class="page-content">
         <span class="page-eyebrow">Legal</span>
@@ -278,8 +301,8 @@
           <p>We use the information you submit solely to respond to your inquiry. We do not use it for marketing, we do not add you to any mailing lists, and we do not share it with any third parties except as described below.</p>
 
           <h2>Third-party services</h2>
-          <p><strong>Formspree.</strong> Our contact form is processed by <a href="https://formspree.io" target="_blank" rel="noopener">Formspree</a>. When you submit the form, your data is transmitted to and stored by Formspree in order to deliver it to us. Their privacy policy is available at <a href="https://formspree.io/legal/privacy-policy" target="_blank" rel="noopener">formspree.io/legal/privacy-policy</a>.</p>
-          <p><strong>Google Analytics.</strong> We use Google Analytics 4, provided by Google LLC. Google may transfer analytics data to servers in the United States and other countries. Google's privacy policy is available at <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a>. You can opt out of Google Analytics across all sites by installing the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">Google Analytics opt-out browser add-on</a>.</p>
+          <p><strong>Formspree.</strong> Our contact form is processed by <a href="https://formspree.io" target="_blank" rel="noopener noreferrer">Formspree</a>. When you submit the form, your data is transmitted to and stored by Formspree in order to deliver it to us. Their privacy policy is available at <a href="https://formspree.io/legal/privacy-policy" target="_blank" rel="noopener noreferrer">formspree.io/legal/privacy-policy</a>.</p>
+          <p><strong>Google Analytics.</strong> We use Google Analytics 4, provided by Google LLC. Google may transfer analytics data to servers in the United States and other countries. Google's privacy policy is available at <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">policies.google.com/privacy</a>. You can opt out of Google Analytics across all sites by installing the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer">Google Analytics opt-out browser add-on</a>.</p>
 
           <h2>Data retention</h2>
           <p>We retain contact form submissions only as long as necessary to respond to and follow up on your inquiry. We do not maintain a permanent database of submissions.</p>
@@ -305,11 +328,11 @@
   <footer>
     <div class="wrap">
       <div class="ft-logo-plate">
-        <img src="./images/CIX-Full-Brand.png" alt="Class IX Consulting">
+        <img src="./images/CIX-Full-Brand.png" alt="Class IX Consulting" width="136" height="36" loading="lazy">
       </div>
       <div class="ft-rule"></div>
       <div class="ft-bottom">
-        <span class="ft-copy">© 2026 Class IX Consulting. All rights reserved. &nbsp;·&nbsp; <a href="/privacy.html" style="color:inherit;text-decoration:none;border-bottom:1px solid rgba(250,247,242,0.20);transition:color 140ms;" onmouseover="this.style.color='#FAF7F2'" onmouseout="this.style.color='inherit'">Privacy Policy</a> &nbsp;·&nbsp; <a href="/terms.html" style="color:inherit;text-decoration:none;border-bottom:1px solid rgba(250,247,242,0.20);transition:color 140ms;" onmouseover="this.style.color='#FAF7F2'" onmouseout="this.style.color='inherit'">Terms of Use</a></span>
+        <span class="ft-copy">© 2026 Class IX Consulting. All rights reserved. &nbsp;·&nbsp; <a href="/privacy.html" class="ft-legal-link">Privacy Policy</a> &nbsp;·&nbsp; <a href="/terms.html" class="ft-legal-link">Terms of Use</a></span>
         <span class="ft-tagline">Clarity. Accountability. Ownership. Partnership.</span>
       </div>
     </div>
