@@ -695,6 +695,86 @@
       line-height: 1.70;
     }
 
+    /* ── Process strip (inside Approach) ── */
+    .process-strip {
+      margin-top: 72px;
+      padding-top: 56px;
+      border-top: 1px solid rgba(250,247,242,0.12);
+    }
+    .process-strip-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(250,247,242,0.45);
+      margin-bottom: 40px;
+      display: block;
+    }
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      position: relative;
+    }
+    /* Connecting line between steps */
+    .process-steps::before {
+      content: '';
+      position: absolute;
+      top: 18px;
+      left: calc(12.5% + 16px);
+      right: calc(12.5% + 16px);
+      height: 1px;
+      background: linear-gradient(90deg,
+        rgba(41,171,226,0.40) 0%,
+        rgba(41,171,226,0.20) 50%,
+        rgba(41,171,226,0.40) 100%
+      );
+    }
+    .process-step { padding-right: 32px; }
+    .process-step:last-child { padding-right: 0; }
+
+    .ps-num {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid rgba(41,171,226,0.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--blue);
+      margin-bottom: 20px;
+      background: var(--ink);
+      position: relative;
+      z-index: 1;
+    }
+    .ps-title {
+      font-family: var(--serif);
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--paper);
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+    .ps-desc {
+      font-size: 14px;
+      color: rgba(250,247,242,0.55);
+      line-height: 1.65;
+    }
+
+    @media (max-width: 768px) {
+      .process-steps {
+        grid-template-columns: 1fr 1fr;
+        gap: 36px 24px;
+      }
+      .process-steps::before { display: none; }
+      .process-step { padding-right: 0; }
+    }
+    @media (max-width: 480px) {
+      .process-steps { grid-template-columns: 1fr; }
+    }
+
     /* ════════════════════════════════════════════════
        WORK
     ════════════════════════════════════════════════ */
@@ -1175,6 +1255,34 @@
           <p>We are as invested in solving your problem as you are. That means getting hands-on, working inside the details, and staying engaged until the work is actually done. You know your organization better than we do — we count on that. What we bring is the outside perspective and structured thinking that turns your knowledge into a solution.</p>
         </div>
       </div>
+
+      <!-- Process strip -->
+      <div class="process-strip reveal">
+        <span class="process-strip-label">What an engagement looks like</span>
+        <div class="process-steps">
+          <div class="process-step">
+            <div class="ps-num">1</div>
+            <div class="ps-title">15-minute call</div>
+            <p class="ps-desc">We talk through what you're working on. You decide if it's a fit — no pressure, no pitch.</p>
+          </div>
+          <div class="process-step">
+            <div class="ps-num">2</div>
+            <div class="ps-title">Scoped proposal</div>
+            <p class="ps-desc">We define the work, the timeline, and the deliverable clearly. No ambiguity about what you're getting.</p>
+          </div>
+          <div class="process-step">
+            <div class="ps-num">3</div>
+            <div class="ps-title">Hands-on engagement</div>
+            <p class="ps-desc">We work inside the problem with you — not around it. You'll know exactly where things stand at every step.</p>
+          </div>
+          <div class="process-step">
+            <div class="ps-num">4</div>
+            <div class="ps-title">Yours to run</div>
+            <p class="ps-desc">Delivered, documented, and fully in your hands. We don't build things that require us to stick around.</p>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
