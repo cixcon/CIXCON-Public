@@ -635,6 +635,16 @@
       transition: color 140ms var(--ease);
     }
     .svc-hook-link:hover { color: var(--orange); }
+    .svc-hook-cases { display: flex; flex-direction: column; }
+    .svc-hook-case { padding-top: 12px; margin-top: 12px; border-top: 1px solid var(--border); }
+    .svc-hook-case:first-child { border-top: none; margin-top: 0; padding-top: 0; }
+    .svc-hook-case-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.4;
+      margin-bottom: 6px;
+    }
 
     /* ════════════════════════════════════════════════
        APPROACH  (full-bleed Ink + ambient pulse)
@@ -1159,7 +1169,7 @@
           <p>We help you define clear objectives, stress-test your assumptions, and build plans that hold up under pressure. Strategic planning, data-driven decision making, risk mitigation, and regulatory compliance are all part of the same discipline — we treat them that way.</p>
           <div class="svc-hook">
             <span class="svc-hook-label">In practice</span>
-            <p class="svc-hook-text">Saved thousands of planning hours — and built a system that runs itself every year.</p>
+            <p class="svc-hook-text">Saved a 4,000-person organization thousands of planning hours and built a system they run without us.</p>
             <a href="/case-study-strategy.html" class="svc-hook-link">Read case study &rarr;</a>
           </div>
         </div>
@@ -1168,7 +1178,7 @@
           <p>Good strategy dies in poor execution. We map your current state, eliminate what's slowing you down, and redesign workflows using Agile methods proven in high-tempo operational environments — so progress is measurable and gains stick.</p>
           <div class="svc-hook">
             <span class="svc-hook-label">In practice</span>
-            <p class="svc-hook-text">Turned a manual reporting grind into a real-time leadership dashboard.</p>
+            <p class="svc-hook-text">Took a department from last to first in their region by automating the manual reporting process holding them back.</p>
             <a href="/case-study-operations.html" class="svc-hook-link">Read case study &rarr;</a>
           </div>
         </div>
@@ -1177,8 +1187,20 @@
           <p>The question isn't whether to adopt AI — it's how to do it deliberately. We help organizations assess readiness, build implementation roadmaps, and translate technology investment into measurable operational gains without disrupting what's already working.</p>
           <div class="svc-hook">
             <span class="svc-hook-label">In practice</span>
-            <p class="svc-hook-text">Linked live disaster data to a client's CRM and turned regional events into a revenue signal.</p>
-            <a href="/case-study-digital.html" class="svc-hook-link">Read case study &rarr;</a>
+            <div class="svc-hook-cases">
+              <div class="svc-hook-case">
+                <p class="svc-hook-case-title">Automating a National Brand's Back Office with Agentic AI</p>
+                <a href="/case-study-ai-workflows.html" class="svc-hook-link">Read case study &rarr;</a>
+              </div>
+              <div class="svc-hook-case">
+                <p class="svc-hook-case-title">Proprietary Software for High-Velocity Customer Acquisition</p>
+                <a href="/case-study-digital.html" class="svc-hook-link">Read case study &rarr;</a>
+              </div>
+              <div class="svc-hook-case">
+                <p class="svc-hook-case-title">A 10X Productivity Gain in a Customer-Facing Workflow</p>
+                <a href="/case-study-productivity.html" class="svc-hook-link">Read case study &rarr;</a>
+              </div>
+            </div>
           </div>
         </div>
         <div class="svc-card reveal">
@@ -1186,7 +1208,7 @@
           <p>Strong organizations are built on strong leaders. Drawing on a background of developing teams under real pressure, we help your people build the skills, confidence, and accountability to lead effectively at every level of the organization.</p>
           <div class="svc-hook">
             <span class="svc-hook-label">In practice</span>
-            <p class="svc-hook-text">Designed a leadership program built to develop people long after we're gone.</p>
+            <p class="svc-hook-text">Built leadership programs across a multi-department enterprise they now run on their own.</p>
             <a href="/case-study-leadership.html" class="svc-hook-link">Read case study &rarr;</a>
           </div>
         </div>
