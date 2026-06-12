@@ -431,19 +431,10 @@
       padding-bottom: calc(112px + var(--cut)) !important;
     }
 
-    /* Work — angled top-left-high ↘ */
-    #work {
-      position: relative;
-      z-index: 4;
-      margin-top: calc(-1 * var(--cut));
-      clip-path: polygon(0 var(--cut), 100% 0, 100% 100%, 0 100%);
-      padding-top: calc(112px + var(--cut)) !important;
-    }
-
     /* CTA Band — angled top-right-high ↙ + bottom ↘ */
     .cta-band {
       position: relative;
-      z-index: 5;
+      z-index: 4;
       background: var(--blue);
       margin-top: calc(-1 * var(--cut));
       clip-path: polygon(0 0, 100% var(--cut), 100% calc(100% - var(--cut)), 0 100%);
@@ -477,7 +468,7 @@
     /* About — angled top-left-high ↘ */
     #about {
       position: relative;
-      z-index: 6;
+      z-index: 5;
       margin-top: calc(-1 * var(--cut));
       clip-path: polygon(0 var(--cut), 100% 0, 100% 100%, 0 100%);
       padding-top: calc(112px + var(--cut)) !important;
@@ -486,7 +477,7 @@
     /* Contact — angled top-right-high ↙ */
     #contact {
       position: relative;
-      z-index: 7;
+      z-index: 6;
       margin-top: calc(-1 * var(--cut));
       clip-path: polygon(0 0, 100% var(--cut), 100% 100%, 0 100%);
       padding-top: calc(112px + var(--cut)) !important;
@@ -495,7 +486,7 @@
     /* Footer — angled top-left-high ↘ */
     footer {
       position: relative;
-      z-index: 8;
+      z-index: 7;
       margin-top: calc(-1 * var(--cut));
       clip-path: polygon(0 var(--cut), 100% 0, 100% 100%, 0 100%);
       padding-top: calc(56px + var(--cut)) !important;
@@ -503,13 +494,12 @@
 
     /* Mobile: remove diagonal cuts — they look odd at narrow widths */
     @media (max-width: 768px) {
-      #services, #approach, #work, .cta-band, #about, #contact, footer {
+      #services, #approach, .cta-band, #about, #contact, footer {
         clip-path: none;
         margin-top: 0;
       }
       #services  { padding-top: 64px !important; }
       #approach  { padding-top: 64px !important; padding-bottom: 64px !important; }
-      #work      { padding-top: 64px !important; }
       .cta-band  { padding: 64px 0 !important; }
       #about     { padding-top: 64px !important; }
       #contact   { padding-top: 64px !important; }
@@ -595,6 +585,8 @@
       border: 1px solid var(--border);
       border-radius: 10px;
       padding: 36px;
+      display: flex;
+      flex-direction: column;
       transition: transform 260ms var(--ease), box-shadow 260ms var(--ease), border-color 260ms var(--ease);
     }
     .svc-card:hover {
@@ -614,6 +606,35 @@
       color: var(--slate);
       line-height: 1.65;
     }
+    .svc-hook {
+      margin-top: auto;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      margin-top: 24px;
+    }
+    .svc-hook-label {
+      display: block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: #8B6A3E;
+      margin-bottom: 8px;
+    }
+    .svc-hook-text {
+      font-size: 14px;
+      color: var(--slate);
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+    .svc-hook-link {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--blue);
+      text-decoration: none;
+      transition: color 140ms var(--ease);
+    }
+    .svc-hook-link:hover { color: var(--orange); }
 
     /* ════════════════════════════════════════════════
        APPROACH  (full-bleed Ink + ambient pulse)
@@ -1081,7 +1102,6 @@
       <ul class="nav-links" role="list">
         <li><a href="#services">Services</a></li>
         <li><a href="#approach">Approach</a></li>
-        <li><a href="#work">Work</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -1099,7 +1119,6 @@
     <button class="mobile-close" id="mobile-close" aria-label="Close menu">✕</button>
     <a href="#services" class="mob-link">Services</a>
     <a href="#approach" class="mob-link">Approach</a>
-    <a href="#work" class="mob-link">Work</a>
     <a href="#about" class="mob-link">About</a>
     <a href="#contact" class="mob-link">Contact</a>
   </div>
@@ -1138,18 +1157,38 @@
         <div class="svc-card reveal">
           <h3>Strategy &amp; Planning</h3>
           <p>We help you define clear objectives, stress-test your assumptions, and build plans that hold up under pressure. Strategic planning, data-driven decision making, risk mitigation, and regulatory compliance are all part of the same discipline — we treat them that way.</p>
+          <div class="svc-hook">
+            <span class="svc-hook-label">In practice</span>
+            <p class="svc-hook-text">Saved thousands of planning hours — and built a system that runs itself every year.</p>
+            <a href="/case-study-strategy.html" class="svc-hook-link">Read case study &rarr;</a>
+          </div>
         </div>
         <div class="svc-card reveal">
           <h3>Operations &amp; Process Improvement</h3>
           <p>Good strategy dies in poor execution. We map your current state, eliminate what's slowing you down, and redesign workflows using Agile methods proven in high-tempo operational environments — so progress is measurable and gains stick.</p>
+          <div class="svc-hook">
+            <span class="svc-hook-label">In practice</span>
+            <p class="svc-hook-text">Turned a manual reporting grind into a real-time leadership dashboard.</p>
+            <a href="/case-study-operations.html" class="svc-hook-link">Read case study &rarr;</a>
+          </div>
         </div>
         <div class="svc-card reveal">
           <h3>Digital Transformation &amp; AI Integration</h3>
           <p>The question isn't whether to adopt AI — it's how to do it deliberately. We help organizations assess readiness, build implementation roadmaps, and translate technology investment into measurable operational gains without disrupting what's already working.</p>
+          <div class="svc-hook">
+            <span class="svc-hook-label">In practice</span>
+            <p class="svc-hook-text">Linked live disaster data to a client's CRM and turned regional events into a revenue signal.</p>
+            <a href="/case-study-digital.html" class="svc-hook-link">Read case study &rarr;</a>
+          </div>
         </div>
         <div class="svc-card reveal">
           <h3>Leadership &amp; Team Development</h3>
           <p>Strong organizations are built on strong leaders. Drawing on a background of developing teams under real pressure, we help your people build the skills, confidence, and accountability to lead effectively at every level of the organization.</p>
+          <div class="svc-hook">
+            <span class="svc-hook-label">In practice</span>
+            <p class="svc-hook-text">Designed a leadership program built to develop people long after we're gone.</p>
+            <a href="/case-study-leadership.html" class="svc-hook-link">Read case study &rarr;</a>
+          </div>
         </div>
       </div>
     </div>
@@ -1185,42 +1224,6 @@
         </div>
       </div>
 
-    </div>
-  </section>
-
-  <!-- ════════════════════════════════════
-       WORK
-  ════════════════════════════════════ -->
-  <section id="work" class="section-pad">
-    <div class="wrap">
-      <div class="sh reveal">
-        <span class="eyebrow">Selected work</span>
-        <h2>A look at the work we've done</h2>
-        <p>Case studies are published as client permissions allow.</p>
-        <span class="sh-rule"></span>
-      </div>
-      <div class="work-grid stagger">
-        <a href="/case-study-strategy.html" class="work-card reveal">
-          <div class="work-meta">Strategy &amp; Planning</div>
-          <p>Built a repeatable annual planning system rooted in the client's own internal policies — enabling senior leaders to develop integrated business plans and goals each year without starting from scratch, saving thousands of man-hours across planning and resourcing teams.</p>
-          <span class="work-read">Read case study &rarr;</span>
-        </a>
-        <a href="/case-study-operations.html" class="work-card reveal">
-          <div class="work-meta">Operations &amp; Process Improvement</div>
-          <p>Replaced a manual analog reporting system with a custom business intelligence platform — giving directors and executives instant visibility into granular departmental performance data, eliminating manual input, and enabling real-time, data-driven decisions at the leadership level.</p>
-          <span class="work-read">Read case study &rarr;</span>
-        </a>
-        <a href="/case-study-digital.html" class="work-card reveal">
-          <div class="work-meta">Digital Transformation &amp; AI Integration</div>
-          <p>Built an AI-enabled system that linked a client's CRM to real-time natural disaster data — automatically mapping customer property locations and delivering personalized outreach based on regional events, turning disaster proximity into a proactive lead generation and retention tool.</p>
-          <span class="work-read">Read case study &rarr;</span>
-        </a>
-        <a href="/case-study-leadership.html" class="work-card reveal">
-          <div class="work-meta">Leadership &amp; Team Development</div>
-          <p>Designed and delivered a leadership development program for mid-level managers and team leads — building interpersonal skills, team motivation strategies, and most importantly, the capability to develop their own people long after the engagement ended.</p>
-          <span class="work-read">Read case study &rarr;</span>
-        </a>
-      </div>
     </div>
   </section>
 
