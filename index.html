@@ -431,13 +431,13 @@
       padding-bottom: calc(112px + var(--cut)) !important;
     }
 
-    /* CTA Band — angled top-right-high ↙ + bottom ↘ */
+    /* CTA Band — angled top-left-high ↘ + bottom ↘ */
     .cta-band {
       position: relative;
       z-index: 4;
       background: var(--blue);
       margin-top: calc(-1 * var(--cut));
-      clip-path: polygon(0 0, 100% var(--cut), 100% calc(100% - var(--cut)), 0 100%);
+      clip-path: polygon(0 var(--cut), 100% 0, 100% calc(100% - var(--cut)), 0 100%);
       padding: calc(88px + var(--cut)) 0 calc(88px + var(--cut));
       text-align: center;
     }
