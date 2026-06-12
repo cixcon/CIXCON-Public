@@ -722,6 +722,16 @@
       box-shadow: 0 20px 56px rgba(31,42,54,0.10);
       border-color: rgba(41,171,226,0.28);
     }
+    a.work-card { color: inherit; text-decoration: none; }
+    .work-read {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--blue);
+      margin-top: auto;
+      padding-top: 4px;
+      transition: color 140ms var(--ease);
+    }
+    a.work-card:hover .work-read { color: var(--orange); }
     .work-meta {
       font-size: 11px;
       font-weight: 700;
@@ -1190,22 +1200,26 @@
         <span class="sh-rule"></span>
       </div>
       <div class="work-grid stagger">
-        <div class="work-card reveal">
+        <a href="/case-study-strategy.html" class="work-card reveal">
           <div class="work-meta">Strategy &amp; Planning</div>
           <p>Built a repeatable annual planning system rooted in the client's own internal policies — enabling senior leaders to develop integrated business plans and goals each year without starting from scratch, saving thousands of man-hours across planning and resourcing teams.</p>
-        </div>
-        <div class="work-card reveal">
+          <span class="work-read">Read case study &rarr;</span>
+        </a>
+        <a href="/case-study-operations.html" class="work-card reveal">
           <div class="work-meta">Operations &amp; Process Improvement</div>
           <p>Replaced a manual analog reporting system with a custom business intelligence platform — giving directors and executives instant visibility into granular departmental performance data, eliminating manual input, and enabling real-time, data-driven decisions at the leadership level.</p>
-        </div>
-        <div class="work-card reveal">
+          <span class="work-read">Read case study &rarr;</span>
+        </a>
+        <a href="/case-study-digital.html" class="work-card reveal">
           <div class="work-meta">Digital Transformation &amp; AI Integration</div>
           <p>Built an AI-enabled system that linked a client's CRM to real-time natural disaster data — automatically mapping customer property locations and delivering personalized outreach based on regional events, turning disaster proximity into a proactive lead generation and retention tool.</p>
-        </div>
-        <div class="work-card reveal">
+          <span class="work-read">Read case study &rarr;</span>
+        </a>
+        <a href="/case-study-leadership.html" class="work-card reveal">
           <div class="work-meta">Leadership &amp; Team Development</div>
           <p>Designed and delivered a leadership development program for mid-level managers and team leads — building interpersonal skills, team motivation strategies, and most importantly, the capability to develop their own people long after the engagement ended.</p>
-        </div>
+          <span class="work-read">Read case study &rarr;</span>
+        </a>
       </div>
     </div>
   </section>
