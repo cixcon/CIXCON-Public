@@ -475,6 +475,21 @@
       color: var(--blue-700);
     }
 
+    /* CTA word-split entrance */
+    .cta-word {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 420ms var(--ease), transform 420ms var(--ease);
+    }
+    .reveal.in .cta-word { opacity: 1; transform: none; }
+    .cta-btn-reveal {
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 340ms var(--ease), transform 340ms var(--ease);
+    }
+    .reveal.in .cta-btn-reveal { opacity: 1; transform: none; }
+
     /* About — angled top-left-high ↘ */
     #about {
       position: relative;
@@ -546,6 +561,24 @@
 
     @media (max-width: 768px) { #hero { padding: 120px 0 80px; } }
 
+    /* Hero scroll hint */
+    @keyframes hintBounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50%       { transform: translateX(-50%) translateY(7px); }
+    }
+    .hero-scroll-hint {
+      position: absolute;
+      bottom: 36px; left: 50%;
+      transform: translateX(-50%);
+      color: var(--slate);
+      opacity: 0.55;
+      transition: opacity 400ms var(--ease);
+      animation: hintBounce 2s ease-in-out infinite;
+      pointer-events: none;
+    }
+    .hero-scroll-hint.hidden { opacity: 0; }
+    @media (max-width: 768px) { .hero-scroll-hint { bottom: 20px; } }
+
     .hero-eyebrow {
       display: flex;
       align-items: center;
@@ -597,13 +630,27 @@
       padding: 36px;
       display: flex;
       flex-direction: column;
+      position: relative;
+      overflow: hidden;
       transition: transform 260ms var(--ease), box-shadow 260ms var(--ease), border-color 260ms var(--ease);
+    }
+    .svc-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--orange);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 300ms var(--ease);
+      border-radius: 10px 10px 0 0;
     }
     .svc-card:hover {
       transform: translateY(-6px);
       box-shadow: 0 20px 56px rgba(31,42,54,0.10);
       border-color: rgba(41,171,226,0.28);
     }
+    .svc-card:hover::before { transform: scaleX(1); }
     .svc-card h3 {
       font-size: 19px;
       font-weight: 700;
@@ -642,9 +689,10 @@
       font-weight: 700;
       color: var(--blue);
       text-decoration: none;
-      transition: color 140ms var(--ease);
+      display: inline-block;
+      transition: color 140ms var(--ease), transform 160ms var(--ease);
     }
-    .svc-hook-link:hover { color: var(--orange); }
+    .svc-hook-link:hover { color: var(--orange); transform: translateX(4px); }
     .svc-hook-cases { display: flex; flex-direction: column; }
     .svc-hook-case { padding-top: 12px; margin-top: 12px; border-top: 1px solid var(--border); }
     .svc-hook-case:first-child { border-top: none; margin-top: 0; padding-top: 0; }
@@ -998,8 +1046,18 @@
       align-items: center;
       gap: 7px;
       white-space: nowrap;
+      position: relative;
+    }
+    .ft-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px; left: 0;
+      height: 1px; width: 0;
+      background: rgba(250,247,242,0.55);
+      transition: width 200ms var(--ease);
     }
     .ft-links a:hover { color: var(--paper); }
+    .ft-links a:hover::after { width: 100%; }
 
     /* LinkedIn icon shared style */
     .li-icon {
@@ -1174,6 +1232,9 @@
         <a href="#contact" class="btn btn-orange">Start a conversation</a>
       </div>
     </div>
+    <div class="hero-scroll-hint" id="hero-scroll-hint" aria-hidden="true">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 8l7 7 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
   </section>
 
   <!-- ════════════════════════════════════
@@ -1293,7 +1354,7 @@
     <div class="wrap">
       <div class="cta-inner reveal">
         <h2>Most engagements start with a 15-minute conversation.</h2>
-        <a href="#contact" class="btn btn-white">Let's talk &rarr;</a>
+        <a href="#contact" class="btn btn-white cta-btn-reveal">Let's talk &rarr;</a>
       </div>
     </div>
   </section>
@@ -1437,10 +1498,12 @@
 
       var backBtn = document.getElementById('back-to-top');
       var progressBar = document.getElementById('scroll-progress');
+      var scrollHint = document.getElementById('hero-scroll-hint');
       function checkScroll() {
         var y = window.scrollY;
         nav.classList.toggle('scrolled', y > 80);
         backBtn.classList.toggle('visible', y > 400);
+        if (scrollHint) scrollHint.classList.toggle('hidden', y > 80);
         var docHeight = document.documentElement.scrollHeight - window.innerHeight;
         progressBar.style.width = (docHeight > 0 ? (y / docHeight) * 100 : 0) + '%';
       }
@@ -1546,6 +1609,14 @@
           submitBtn.textContent = 'Send message';
         });
       });
+
+      /* ── CTA word split ── */
+      var ctaH2 = document.querySelector('.cta-band h2');
+      if (ctaH2) {
+        ctaH2.innerHTML = ctaH2.textContent.trim().split(' ').map(function(w, i) {
+          return '<span class="cta-word" style="transition-delay:' + (i * 45 + 80) + 'ms">' + w + '</span>';
+        }).join(' ');
+      }
 
       /* ── Scroll reveal (IntersectionObserver) ── */
       var reveals = document.querySelectorAll('.reveal');
