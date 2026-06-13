@@ -92,11 +92,20 @@
       <div class="cs-form-section">
         <p class="cs-form-heading">Dealing with a similar challenge?</p>
         <form class="cs-form" action="https://formspree.io/f/xaqvanll" method="POST">
-          <div class="cs-form-row">
-            <input type="text" name="name" placeholder="Your name" required>
-            <input type="email" name="email" placeholder="Your email" required>
+                    <div class="cs-form-row">
+            <div class="fg">
+              <input type="text" name="name" id="cs-name" autocomplete="name" placeholder=" " required>
+              <label for="cs-name">Your name</label>
+            </div>
+            <div class="fg">
+              <input type="email" name="email" id="cs-email" autocomplete="email" placeholder=" " required>
+              <label for="cs-email">Your email</label>
+            </div>
           </div>
-          <textarea name="message" placeholder="What are you working on?" required></textarea>
+          <div class="fg">
+            <textarea name="message" id="cs-message" placeholder=" " required></textarea>
+            <label for="cs-message">What are you working on?</label>
+          </div>
           <button type="submit" class="btn">Send message &rarr;</button>
         </form>
       </div>
