@@ -941,23 +941,16 @@
     }
     @media (max-width: 560px) { .form-row { grid-template-columns: 1fr; } }
 
-    .fg {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-    .fg label {
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--ink);
-    }
+    .fg { position: relative; }
     .fg input, .fg textarea {
+      display: block;
+      width: 100%;
       font-size: 15px;
       color: var(--ink);
       background: var(--white);
       border: 1px solid var(--border-mid);
       border-radius: 4px;
-      padding: 12px 14px;
+      padding: 18px 14px 8px;
       outline: none;
       line-height: 1.5;
       transition: border-color 140ms var(--ease), box-shadow 140ms var(--ease);
@@ -967,6 +960,29 @@
       box-shadow: 0 0 0 3px rgba(41,171,226,0.12);
     }
     .fg textarea { resize: vertical; min-height: 120px; }
+    .fg label {
+      position: absolute;
+      left: 14px; top: 14px;
+      font-size: 15px; font-weight: 400;
+      color: var(--slate);
+      line-height: 1;
+      pointer-events: none;
+      transform-origin: left center;
+      background: transparent;
+      transition: transform 180ms var(--ease), color 180ms var(--ease), font-weight 180ms var(--ease);
+      z-index: 1;
+    }
+    .fg input:focus + label,
+    .fg input:not(:placeholder-shown) + label,
+    .fg textarea:focus + label,
+    .fg textarea:not(:placeholder-shown) + label {
+      transform: translateY(-10px) scale(0.78);
+      font-weight: 700;
+    }
+    .fg input:focus + label,
+    .fg textarea:focus + label { color: var(--blue); }
+    .fg input:not(:focus):not(:placeholder-shown) + label,
+    .fg textarea:not(:focus):not(:placeholder-shown) + label { color: var(--ink); }
 
     .form-note {
       font-size: 13px;
@@ -1430,21 +1446,21 @@
         >
           <div class="form-row">
             <div class="fg">
+              <input type="text" id="f-name" name="name" autocomplete="name" placeholder=" " required>
               <label for="f-name">Name</label>
-              <input type="text" id="f-name" name="name" autocomplete="name" placeholder="Your name" required>
             </div>
             <div class="fg">
+              <input type="email" id="f-email" name="email" autocomplete="email" placeholder=" " required>
               <label for="f-email">Email</label>
-              <input type="email" id="f-email" name="email" autocomplete="email" placeholder="you@example.com" required>
             </div>
           </div>
           <div class="fg">
+            <input type="text" id="f-company" name="company" autocomplete="organization" placeholder=" ">
             <label for="f-company">Company or organization</label>
-            <input type="text" id="f-company" name="company" autocomplete="organization" placeholder="Where you work">
           </div>
           <div class="fg">
+            <textarea id="f-message" name="message" placeholder=" " required></textarea>
             <label for="f-message">What are you working on?</label>
-            <textarea id="f-message" name="message" placeholder="Describe the problem or project. Short is fine." required></textarea>
           </div>
           <div>
             <button type="submit" class="btn btn-orange">Send message</button>
