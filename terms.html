@@ -332,5 +332,25 @@
     </div>
   </footer>
 
+  <script>
+  (function(){
+    var o = document.createElement('div');
+    o.style.cssText = 'position:fixed;inset:0;background:#FAF7F2;opacity:1;pointer-events:auto;z-index:10000;transition:opacity 260ms cubic-bezier(0.22,0.61,0.36,1)';
+    document.body.appendChild(o);
+    requestAnimationFrame(function(){ requestAnimationFrame(function(){ o.style.opacity='0'; o.style.pointerEvents='none'; }); });
+    document.addEventListener('click', function(e) {
+      var a = e.target.closest('a[href]');
+      if (!a) return;
+      var h = a.getAttribute('href');
+      if (!h || h[0]==='#' || /^(https?:|mailto:|tel:)/.test(h) || a.target==='_blank') return;
+      e.preventDefault();
+      o.style.opacity='1'; o.style.pointerEvents='auto';
+      setTimeout(function(){ window.location.href=h; }, 260);
+    });
+    window.addEventListener('pageshow', function(e) {
+      if (e.persisted) { o.style.opacity='0'; o.style.pointerEvents='none'; }
+    });
+  })();
+  </script>
 </body>
 </html>
