@@ -278,8 +278,11 @@
       width: 22px; height: 2px;
       background: var(--ink);
       border-radius: 1px;
-      transition: all 220ms var(--ease);
+      transition: transform 220ms var(--ease), opacity 220ms var(--ease);
     }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
     /* Mobile overlay */
     .mobile-overlay {
@@ -1419,6 +1422,7 @@
 
       function openMenu() {
         overlay.classList.add('open');
+        btn.classList.add('open');
         btn.setAttribute('aria-expanded', 'true');
         document.body.style.overflow = 'hidden';
         var focusable = getFocusable();
@@ -1426,6 +1430,7 @@
       }
       function closeMenu() {
         overlay.classList.remove('open');
+        btn.classList.remove('open');
         btn.setAttribute('aria-expanded', 'false');
         document.body.style.overflow = '';
         btn.focus();
