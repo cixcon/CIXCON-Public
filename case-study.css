@@ -121,12 +121,13 @@ main { padding-top: 80px; }
 .cs-form { display: flex; flex-direction: column; gap: 14px; }
 .cs-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 @media (max-width: 560px) { .cs-form-row { grid-template-columns: 1fr; } }
+.cs-form .fg { position: relative; }
 .cs-form input,
 .cs-form textarea {
-  width: 100%; font-family: var(--sans); font-size: 15px;
+  display: block; width: 100%; font-family: var(--sans); font-size: 15px;
   color: var(--ink); background: var(--white);
   border: 1px solid var(--border); border-radius: 4px;
-  padding: 12px 14px;
+  padding: 22px 14px 8px;
   transition: border-color 140ms var(--ease), box-shadow 140ms var(--ease);
   outline: none;
 }
@@ -135,8 +136,22 @@ main { padding-top: 80px; }
   border-color: var(--blue);
   box-shadow: 0 0 0 3px rgba(41,171,226,0.12);
 }
-.cs-form textarea { resize: vertical; min-height: 100px; }
+.cs-form textarea { resize: vertical; min-height: 110px; }
 .cs-form button[type="submit"] { align-self: flex-start; }
+.cs-form .fg label {
+  position: absolute; left: 14px; top: 14px;
+  font-size: 15px; font-weight: 400; color: var(--slate);
+  pointer-events: none; transform-origin: left center;
+  transition: transform 180ms var(--ease), color 180ms var(--ease), font-weight 180ms var(--ease);
+}
+.cs-form .fg input:focus + label,
+.cs-form .fg input:not(:placeholder-shown) + label,
+.cs-form .fg textarea:focus + label,
+.cs-form .fg textarea:not(:placeholder-shown) + label {
+  transform: translateY(-10px) scale(0.78); font-weight: 700;
+}
+.cs-form .fg input:focus + label,
+.cs-form .fg textarea:focus + label { color: var(--blue); }
 .btn {
   display: inline-block; font-family: var(--sans); font-size: 15px; font-weight: 700;
   line-height: 1; padding: 14px 28px; border-radius: 4px; text-decoration: none;
