@@ -239,12 +239,24 @@
       font-size: 15px;
       color: var(--ink);
       text-decoration: none;
-      border-bottom: 1px solid transparent;
-      padding-bottom: 2px;
-      transition: color 140ms var(--ease), border-color 140ms var(--ease);
+      border-bottom: none;
+      padding-bottom: 0;
+      position: relative;
+      transition: color 140ms var(--ease);
     }
-    .nav-links a:hover { color: var(--blue); border-bottom-color: var(--blue); }
-    .nav-links a.active { color: var(--blue); border-bottom-color: var(--blue); }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px; left: 0;
+      height: 1.5px; width: 0;
+      background: var(--blue);
+      border-radius: 1px;
+      transition: width 200ms var(--ease);
+    }
+    .nav-links a:hover { color: var(--blue); }
+    .nav-links a:hover::after,
+    .nav-links a.active::after { width: 100%; }
+    .nav-links a.active { color: var(--blue); }
 
     /* Nav CTA button */
     .nav-cta {
@@ -309,6 +321,16 @@
       transition: color 140ms;
     }
     .mobile-overlay a:hover { color: var(--blue); }
+    .mob-link {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 280ms var(--ease), transform 280ms var(--ease), color 140ms;
+    }
+    .mobile-overlay.open .mob-link { opacity: 1; transform: none; }
+    .mobile-overlay.open .mob-link:nth-child(2) { transition-delay: 60ms; }
+    .mobile-overlay.open .mob-link:nth-child(3) { transition-delay: 120ms; }
+    .mobile-overlay.open .mob-link:nth-child(4) { transition-delay: 180ms; }
+    .mobile-overlay.open .mob-link:nth-child(5) { transition-delay: 240ms; }
     .mobile-close {
       position: absolute;
       top: 20px; right: 24px;
@@ -791,15 +813,17 @@
     }
     @media (max-width: 768px) { .about-grid { grid-template-columns: 1fr; gap: 36px; } }
 
+    .about-photo { perspective: 900px; }
     .about-photo img {
       width: 100%;
       height: auto;
       border-radius: 6px;
       border: 1px solid var(--border);
-      transition: box-shadow 300ms var(--ease);
+      transition: transform 320ms var(--ease), box-shadow 320ms var(--ease);
     }
-    .about-photo img:hover {
-      box-shadow: 0 12px 40px rgba(31,42,54,0.12);
+    .about-photo:hover img {
+      transform: rotateX(3deg) rotateY(-5deg) scale(1.02);
+      box-shadow: 12px 24px 52px rgba(31,42,54,0.15);
     }
 
     .about-eyebrow { margin-bottom: 14px; }
@@ -1053,6 +1077,16 @@
       color: rgba(250,247,242,0.72);
     }
 
+    /* ── Scroll progress bar ── */
+    .scroll-progress {
+      position: fixed;
+      top: 0; left: 0;
+      height: 2px; width: 0%;
+      background: var(--orange);
+      z-index: 9998;
+      transition: width 80ms linear;
+    }
+
     /* ── Scroll-to-top button ── */
     .back-to-top {
       position: fixed;
@@ -1088,6 +1122,7 @@
 </head>
 <body>
 
+  <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
   <!-- ════════════════════════════════════
@@ -1401,10 +1436,13 @@
       var hero = document.getElementById('hero');
 
       var backBtn = document.getElementById('back-to-top');
+      var progressBar = document.getElementById('scroll-progress');
       function checkScroll() {
         var y = window.scrollY;
         nav.classList.toggle('scrolled', y > 80);
         backBtn.classList.toggle('visible', y > 400);
+        var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        progressBar.style.width = (docHeight > 0 ? (y / docHeight) * 100 : 0) + '%';
       }
       window.addEventListener('scroll', checkScroll, { passive: true });
       checkScroll();
