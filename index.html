@@ -1446,7 +1446,9 @@
         }
       });
 
-      btn.addEventListener('click', openMenu);
+      btn.addEventListener('click', function() {
+        overlay.classList.contains('open') ? closeMenu() : openMenu();
+      });
       closeB.addEventListener('click', closeMenu);
       links.forEach(function (l) { l.addEventListener('click', closeMenu); });
 
