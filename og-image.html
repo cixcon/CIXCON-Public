@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,600;1,8..60,600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      width: 1200px;
+      height: 630px;
+      overflow: hidden;
+      background: #FAF7F2;
+    }
+
+    .card {
+      width: 1200px;
+      height: 630px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 72px 88px;
+    }
+
+    /* Background gradient — light neutral */
+    .bg {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, #FFFFFF 0%, #FAF7F2 50%, #F0EFED 100%);
+    }
+
+    /* Ambient oxblood glow — top right */
+    .glow-1 {
+      position: absolute;
+      top: -120px;
+      right: -80px;
+      width: 560px;
+      height: 560px;
+      background: radial-gradient(ellipse, rgba(102,0,0,0.07) 0%, transparent 65%);
+    }
+
+    /* Ambient oxblood glow — bottom left, lower opacity for depth */
+    .glow-2 {
+      position: absolute;
+      bottom: -100px;
+      left: 200px;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(ellipse, rgba(102,0,0,0.04) 0%, transparent 65%);
+    }
+
+    /* Oxblood top rule */
+    .top-rule {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent 0%, #660000 20%, #660000 80%, transparent 100%);
+    }
+
+    /* Content */
+    .content {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .logo {
+      margin-bottom: 48px;
+    }
+
+    .logo img {
+      width: 680px;
+      height: auto;
+      display: block;
+    }
+
+    .eyebrow {
+      font-family: "Inter", sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(26,26,26,0.40);
+      margin-bottom: 18px;
+    }
+
+    .tagline {
+      font-family: "Source Serif 4", Georgia, serif;
+      font-size: 58px;
+      font-weight: 600;
+      color: #1A1A1A;
+      line-height: 1.1;
+      letter-spacing: -0.015em;
+      margin-bottom: 28px;
+    }
+
+    .tagline .accent {
+      font-style: italic;
+      color: #5A6772;
+    }
+
+    .divider {
+      width: 48px;
+      height: 2px;
+      background: #660000;
+      margin-bottom: 24px;
+    }
+
+    .sub {
+      font-family: "Inter", sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      color: #5A6772;
+      letter-spacing: 0.06em;
+    }
+
+    .url {
+      position: absolute;
+      bottom: 40px;
+      right: 88px;
+      font-family: "Inter", sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.10em;
+      color: rgba(26,26,26,0.28);
+      z-index: 10;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="bg"></div>
+    <div class="glow-1"></div>
+    <div class="glow-2"></div>
+    <div class="top-rule"></div>
+
+    <div class="content">
+      <div class="logo">
+        <img src="./images/branding/class-ix-one-liner.svg" alt="Class IX Consulting">
+      </div>
+      <div class="tagline">
+        Clear thinking.<br><span class="accent">Simple solutions.</span>
+      </div>
+      <div class="divider"></div>
+      <div class="sub">Strategy &nbsp;·&nbsp; Operations &nbsp;·&nbsp; Logistics &nbsp;·&nbsp; Digital Transformation &nbsp;·&nbsp; Leadership</div>
+    </div>
+
+    <div class="url">cixcon.com</div>
+  </div>
+</body>
+</html>
